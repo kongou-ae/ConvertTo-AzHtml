@@ -1,0 +1,2001 @@
+<html>
+<head>
+    <title>ConvertTo-AzHtml</title>
+    <meta name="author" content="kongou_ae">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <style>
+        .container {
+            padding-top: 60px;
+        }
+        table {
+            font-size: 14px;
+        }
+    </style>
+    <script type="text/javascript" language="JavaScript">
+        window.addEventListener("hashchange", function() { scrollBy(0, -70) })
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <a class="navbar-brand" href="#">ConvertTo-AzHtml</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Network
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#vnet">Virtual Network</a>
+                        <a class="dropdown-item" href="#nic">Network Interface</a>
+                        <a class="dropdown-item" href="#nsg">Network Security Group</a>
+                        <a class="dropdown-item" href="#routeTable">Route Table</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Compute
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#vm">Virtual Machine</a>
+                        <a class="dropdown-item" href="#disk">Disk</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container ml-sm-1">
+        <div class="row">
+            <div class="col-sm-12">
+                <a id="vnet">
+                    <h2>Virtual Network</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>AddressSpace</th>
+                            <th>Subnets</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+        <td>AzSHCILabvNet</td>
+        <td>japaneast</td>
+        <td>azshci</td>
+        
+                    <td>10.0.0.0/24</td>
+        
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NetworkSecurityGroup</th>
+                        <th>RouteTable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr>
+                        <td>AzSHCILabSubnet</td>
+                        <td>10.0.0.0/24</td>
+
+                                                                                <td>
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Network/networkSecurityGroups/AzSHCILabNSG">
+                                    AzSHCILabNSG
+                                </a>
+                            </td>
+                                                
+                                                                                <td>
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/routeTables/azfw">
+                                    azfw
+                                </a>
+                            </td>
+                                            </tr>
+                                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>dev-vnet</td>
+        <td>japaneast</td>
+        <td>dev</td>
+        
+                    <td>192.168.212.0/24</td>
+        
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NetworkSecurityGroup</th>
+                        <th>RouteTable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr>
+                        <td>default</td>
+                        <td>192.168.212.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>fgnew</td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        
+                    <td>
+                <ul class="list-unstyled">
+                     
+                        <li>10.0.0.0/16</li>
+                     
+                        <li>192.168.210.0/24</li>
+                                    </ul>
+            </td>
+        
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NetworkSecurityGroup</th>
+                        <th>RouteTable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr>
+                        <td>EntrySubnet</td>
+                        <td>10.0.1.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>HASyncSubnet</td>
+                        <td>10.0.3.0/28</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>ManagementSubnet</td>
+                        <td>10.0.4.0/28</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>ProtectedSubnet</td>
+                        <td>10.0.5.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                                                <td>
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/routeTables/FGTDefaultAPRouteTable">
+                                    FGTDefaultAPRouteTable
+                                </a>
+                            </td>
+                                            </tr>
+                 
+                    <tr>
+                        <td>GatewaySubnet</td>
+                        <td>192.168.210.0/27</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>AzureFirewallSubnet</td>
+                        <td>10.0.0.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>AzureBastionSubnet</td>
+                        <td>10.0.6.0/24</td>
+
+                                                                                <td>
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/networkSecurityGroups/bastion">
+                                    bastion
+                                </a>
+                            </td>
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>appservice02</td>
+                        <td>10.0.8.0/27</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>appservicePlink</td>
+                        <td>10.0.8.32/27</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>nat</td>
+                        <td>192.168.210.32/28</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>monitorplink</td>
+                        <td>10.0.8.64/27</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>iaas</td>
+                        <td>10.0.7.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>TransitSubnet</td>
+                        <td>10.0.2.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>proxy</td>
+        <td>japaneast</td>
+        <td>proxy</td>
+        
+                    <td>172.25.2.0/24</td>
+        
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NetworkSecurityGroup</th>
+                        <th>RouteTable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr>
+                        <td>server</td>
+                        <td>172.25.2.0/28</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>GatewaySubnet</td>
+                        <td>172.25.2.16/28</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                                                <td>
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/routeTables/proxy">
+                                    proxy
+                                </a>
+                            </td>
+                                            </tr>
+                                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>syslog-vnet</td>
+        <td>japaneast</td>
+        <td>syslog</td>
+        
+                    <td>10.1.0.0/24</td>
+        
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NetworkSecurityGroup</th>
+                        <th>RouteTable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr>
+                        <td>default</td>
+                        <td>10.1.0.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                                                <td>
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/routeTables/vpn">
+                                    vpn
+                                </a>
+                            </td>
+                                            </tr>
+                                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>Vnet0503</td>
+        <td>japaneast</td>
+        <td>whatif</td>
+        
+                    <td>10.0.0.0/16</td>
+        
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NetworkSecurityGroup</th>
+                        <th>RouteTable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr>
+                        <td>subnet01</td>
+                        <td>10.0.0.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                 
+                    <tr>
+                        <td>GatewaySubnet</td>
+                        <td>10.0.1.0/28</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>ml-wu2c09083361eabe</td>
+        <td>westus2</td>
+        <td>manakana</td>
+        
+                    <td>10.0.0.0/24</td>
+        
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NetworkSecurityGroup</th>
+                        <th>RouteTable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr>
+                        <td>default</td>
+                        <td>10.0.0.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                                </tbody>
+            </table>
+        </td>
+    </tr>
+                    </tbody>
+                </table>
+            
+                <a id="nic">
+                    <h2>Network Interface</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>IpConfigurations</th>
+                            <th>DnsSettings</th>
+                            <th>EnableIPForwarding</th>
+                            <th>NetworkSecurityGroup</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Network/networkInterfaces/AzSHCILabNIC1">
+                AzSHCILabNIC1
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>azshci</td>
+        <td>10.0.0.4</td>
+
+                    <td>
+                <ul class="list-unstyled">
+                                    </ul>
+            </td>
+        
+        <td>False</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Network/networkSecurityGroups/AzSHCILabNSG">
+                    AzSHCILabNSG
+                </a>
+            </td>
+            </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/networkInterfaces/nic1">
+                nic1
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        <td>10.0.2.6</td>
+
+                    <td>
+                <ul class="list-unstyled">
+                                    </ul>
+            </td>
+        
+        <td>False</td>
+
+                    <td>
+            </td>  
+            </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/networkInterfaces/openvpn991">
+                openvpn991
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>openvpn_group</td>
+        <td>10.1.0.6</td>
+
+                    <td>
+                <ul class="list-unstyled">
+                                    </ul>
+            </td>
+        
+        <td>True</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/networkSecurityGroups/openvpn-nsg">
+                    openvpn-nsg
+                </a>
+            </td>
+            </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkInterfaces/explictproxy696">
+                explictproxy696
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>proxy</td>
+        <td>172.25.2.5</td>
+
+                    <td>
+                <ul class="list-unstyled">
+                                    </ul>
+            </td>
+        
+        <td>False</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkSecurityGroups/explictproxy-nsg">
+                    explictproxy-nsg
+                </a>
+            </td>
+            </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkInterfaces/transprocy744">
+                transprocy744
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>proxy</td>
+        <td>172.25.2.4</td>
+
+                    <td>xxx.xxx.xxx.xxx</td>
+        
+        <td>True</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkSecurityGroups/transprocy-nsg">
+                    transprocy-nsg
+                </a>
+            </td>
+            </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/syslog/providers/Microsoft.Network/networkInterfaces/syslog01733">
+                syslog01733
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>syslog</td>
+        <td>10.1.0.4</td>
+
+                    <td>
+                <ul class="list-unstyled">
+                                    </ul>
+            </td>
+        
+        <td>False</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/syslog/providers/Microsoft.Network/networkSecurityGroups/syslog01-nsg">
+                    syslog01-nsg
+                </a>
+            </td>
+            </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/manakana/providers/Microsoft.Network/networkInterfaces/ml-wu2c09083361eabe">
+                ml-wu2c09083361eabe
+            </a>
+        </td>
+        <td>westus2</td>
+        <td>manakana</td>
+        <td>10.0.0.4</td>
+
+                    <td>
+                <ul class="list-unstyled">
+                                    </ul>
+            </td>
+        
+        <td>False</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/manakana/providers/Microsoft.Network/networkSecurityGroups/ml-wu2c09083361eabe">
+                    ml-wu2c09083361eabe
+                </a>
+            </td>
+            </tr>
+                    </tbody>
+                </table>
+            
+                <a id="nsg">
+                    <h2>Network Security Group</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>SecurityRules</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Network/networkSecurityGroups/AzSHCILabNSG">
+                AzSHCILabNSG
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>azshci</td>
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Access</th>
+                    </tr>
+                </thead>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>1000</td>
+                    <td>default-allow-rdp</td>
+
+                                            <td>3389</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>
+                        <ul class="list-unstyled">
+                         
+                            <li>xxx.xxx.xxx.xxx</li>
+                         
+                            <li>xxx.xxx.xxx.xxx</li>
+                         
+                            <li>xxx.xxx.xxx.xxx</li>
+                                                </ul>
+                        </td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/networkSecurityGroups/bastion">
+                bastion
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Access</th>
+                    </tr>
+                </thead>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>100</td>
+                    <td>100_in</td>
+
+                                            <td>443</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>*</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>105</td>
+                    <td>105_in</td>
+
+                                            <td>443</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>AzureLoadBalancer</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>106</td>
+                    <td>Port_8080</td>
+
+                                            <td>443</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>GatewayManager</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>110</td>
+                    <td>110_in</td>
+
+                                            <td>*</td>
+                                        
+                    <td>*</td>
+
+                                            <td>Internet</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Deny</td>
+                </tbody>
+                                <tbody>
+                    <td>Outbound</td>
+                    <td>100</td>
+                    <td>100</td>
+
+                                            <td>443</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>VirtualNetwork</td>
+                    
+                                            <td>GatewayManager</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Outbound</td>
+                    <td>200</td>
+                    <td>200</td>
+
+                                            <td>443</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>VirtualNetwork</td>
+                    
+                                            <td>AzureCloud</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Outbound</td>
+                    <td>210</td>
+                    <td>210</td>
+
+                                            <td>
+                        <ul class="list-unstyled">
+                         
+                            <li>3389</li>
+                         
+                            <li>22</li>
+                                                </ul>
+                        </td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>VirtualNetwork</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Outbound</td>
+                    <td>400</td>
+                    <td>400</td>
+
+                                            <td>*</td>
+                                        
+                    <td>*</td>
+
+                                            <td>VirtualNetwork</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Deny</td>
+                </tbody>
+                            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/networkSecurityGroups/bastion2">
+                bastion2
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Access</th>
+                    </tr>
+                </thead>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>100</td>
+                    <td>100_in</td>
+
+                                            <td>443</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>*</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>105</td>
+                    <td>105_in</td>
+
+                                            <td>443</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>AzureLoadBalancer</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>106</td>
+                    <td>Port_8080</td>
+
+                                            <td>443</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>GatewayManager</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>110</td>
+                    <td>110_in</td>
+
+                                            <td>*</td>
+                                        
+                    <td>*</td>
+
+                                            <td>*</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Deny</td>
+                </tbody>
+                                <tbody>
+                    <td>Outbound</td>
+                    <td>100</td>
+                    <td>100</td>
+
+                                            <td>443</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>VirtualNetwork</td>
+                    
+                                            <td>GatewayManager</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Outbound</td>
+                    <td>200</td>
+                    <td>200</td>
+
+                                            <td>443</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>VirtualNetwork</td>
+                    
+                                            <td>AzureCloud</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Outbound</td>
+                    <td>210</td>
+                    <td>210</td>
+
+                                            <td>
+                        <ul class="list-unstyled">
+                         
+                            <li>3389</li>
+                         
+                            <li>22</li>
+                                                </ul>
+                        </td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>VirtualNetwork</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Outbound</td>
+                    <td>400</td>
+                    <td>400</td>
+
+                                            <td>*</td>
+                                        
+                    <td>*</td>
+
+                                            <td>*</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Deny</td>
+                </tbody>
+                            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/networkSecurityGroups/fg-hcduddgb4lp24-NSG">
+                fg-hcduddgb4lp24-NSG
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Access</th>
+                    </tr>
+                </thead>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>100</td>
+                    <td>AllowAllInbound</td>
+
+                                            <td>*</td>
+                                        
+                    <td>*</td>
+
+                                            <td>*</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Deny</td>
+                </tbody>
+                                <tbody>
+                    <td>Outbound</td>
+                    <td>105</td>
+                    <td>AllowAllOutbound</td>
+
+                                            <td>*</td>
+                                        
+                    <td>*</td>
+
+                                            <td>*</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Deny</td>
+                </tbody>
+                            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/networkSecurityGroups/openvpn-nsg">
+                openvpn-nsg
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>openvpn_group</td>
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Access</th>
+                    </tr>
+                </thead>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>1000</td>
+                    <td>default-allow-ssh</td>
+
+                                            <td>22</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>*</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>1010</td>
+                    <td>Port_8080</td>
+
+                                            <td>443</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>
+                        <ul class="list-unstyled">
+                         
+                            <li>xxx.xxx.xxx.xxx</li>
+                         
+                            <li>xxx.xxx.xxx.xxx</li>
+                         
+                            <li>xxx.xxx.xxx.xxx</li>
+                                                </ul>
+                        </td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Outbound</td>
+                    <td>100</td>
+                    <td>out_vpn</td>
+
+                                            <td>*</td>
+                                        
+                    <td>*</td>
+
+                                            <td>10.8.0.0/16</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkSecurityGroups/explictproxy-nsg">
+                explictproxy-nsg
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>proxy</td>
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Access</th>
+                    </tr>
+                </thead>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>300</td>
+                    <td>SSH</td>
+
+                                            <td>22</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>*</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkSecurityGroups/transprocy-nsg">
+                transprocy-nsg
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>proxy</td>
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Access</th>
+                    </tr>
+                </thead>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>300</td>
+                    <td>SSH</td>
+
+                                            <td>22</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>*</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>310</td>
+                    <td>proxy</td>
+
+                                            <td>
+                        <ul class="list-unstyled">
+                         
+                            <li>80</li>
+                         
+                            <li>443</li>
+                         
+                            <li>3128</li>
+                                                </ul>
+                        </td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>xxx.xxx.xxx.xxx/24</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>320</td>
+                    <td>ForGre</td>
+
+                                            <td>*</td>
+                                        
+                    <td>*</td>
+
+                                            <td>xxx.xxx.xxx.xxx/24</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/syslog/providers/Microsoft.Network/networkSecurityGroups/syslog01-nsg">
+                syslog01-nsg
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>syslog</td>
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Access</th>
+                    </tr>
+                </thead>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>1000</td>
+                    <td>default-allow-ssh</td>
+
+                                            <td>22</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>
+                        <ul class="list-unstyled">
+                         
+                            <li>xxx.xxx.xxx.xxx</li>
+                         
+                            <li>10.8.0.0/16</li>
+                         
+                            <li>xxx.xxx.xxx.xxx</li>
+
+                                                </ul>
+                        </td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>1010</td>
+                    <td>in_syslog</td>
+
+                                            <td>514</td>
+                                        
+                    <td>UDP</td>
+
+                                            <td>xxx.xxx.xxx.xxx</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>1020</td>
+                    <td>forGre</td>
+
+                                            <td>*</td>
+                                        
+                    <td>*</td>
+
+                                            <td>xxx.xxx.xxx.xxx</td>
+                    
+                                            <td>VirtualNetwork</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/manakana/providers/Microsoft.Network/networkSecurityGroups/ml-wu2c09083361eabe">
+                ml-wu2c09083361eabe
+            </a>
+        </td>
+        <td>westus2</td>
+        <td>manakana</td>
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Access</th>
+                    </tr>
+                </thead>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>1030</td>
+                    <td>default-allow-ssh</td>
+
+                                            <td>22</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>*</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                                <tbody>
+                    <td>Inbound</td>
+                    <td>4096</td>
+                    <td>default-proxy-allow</td>
+
+                                            <td>44224</td>
+                                        
+                    <td>TCP</td>
+
+                                            <td>AzureMachineLearning</td>
+                    
+                                            <td>*</td>
+                    
+                    <td>Allow</td>
+                </tbody>
+                            </table>
+        </td>
+    </tr>
+                    </tbody>
+                </table>
+
+                <a id="routeTable">
+                    <h2>Route table</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>Routes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/routeTables/azfw">
+                azfw
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        
+        <td>
+                        <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NextHopType</th>
+                        <th>NextHopIpAddress</th>
+                    </tr>
+                </thead>
+                                    <tbody>
+                        <td>internet</td>
+                        <td>0.0.0.0/0</td>
+                        <td>VirtualAppliance</td>
+                        <td>10.0.0.4</td>
+                    </tbody>
+                                        </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/routeTables/FGTDefaultAPRouteTable">
+                FGTDefaultAPRouteTable
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        
+        <td>
+                        <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NextHopType</th>
+                        <th>NextHopIpAddress</th>
+                    </tr>
+                </thead>
+                                    <tbody>
+                        <td>toDefault</td>
+                        <td>0.0.0.0/0</td>
+                        <td>VirtualAppliance</td>
+                        <td>10.0.0.4</td>
+                    </tbody>
+                                    <tbody>
+                        <td>home</td>
+                        <td>xxx.xxx.xxx.xxx/32</td>
+                        <td>Internet</td>
+                        <td></td>
+                    </tbody>
+                                        </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/routeTables/protect2">
+                protect2
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        
+        <td>
+                        <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NextHopType</th>
+                        <th>NextHopIpAddress</th>
+                    </tr>
+                </thead>
+                                    <tbody>
+                        <td>ToOnpre</td>
+                        <td>0.0.0.0/0</td>
+                        <td>VirtualAppliance</td>
+                        <td>10.0.1.4</td>
+                    </tbody>
+                                    <tbody>
+                        <td>overlap</td>
+                        <td>192.168.210.0/30</td>
+                        <td>None</td>
+                        <td></td>
+                    </tbody>
+                                        </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/routeTables/vpn">
+                vpn
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>openvpn_group</td>
+        
+        <td>
+                        <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NextHopType</th>
+                        <th>NextHopIpAddress</th>
+                    </tr>
+                </thead>
+                                    <tbody>
+                        <td>vpn</td>
+                        <td>10.8.0.0/16</td>
+                        <td>VirtualAppliance</td>
+                        <td>10.1.0.6</td>
+                    </tbody>
+                                        </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/routeTables/proxy">
+                proxy
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>proxy</td>
+        
+        <td>
+                        </table>
+        </td>
+    </tr>
+                    </tbody>
+                </table>
+
+                <a id="vm">
+                    <h2>Virtual Machine</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>Size</th>
+                            <th>OsType</th>
+                            <th>OsDisk</th>
+                            <th>DataDisk</th>
+                            <th>NetworkInterface</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/AZSHCI/providers/Microsoft.Compute/virtualMachines/AzSHCIHost001">
+                AzSHCIHost001
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>AZSHCI</td>
+        <td>Standard_D16s_v3</td>
+        <td>Windows</td>
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>ManagedDisk</th>
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/AZSHCI/providers/Microsoft.Compute/disks/AzSHCIHost001_OsDisk_1_4c25b38d06b0404283c92f0c6306e7ac">
+                                AzSHCIHost001_OsDisk_1_4c25b38d06b0404283c92f0c6306e7ac
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Caching</th>
+                        <td>ReadWrite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+
+        <td>
+                    </td>
+
+        <td>
+            <ul class="list-unstyled">
+             
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Network/networkInterfaces/AzSHCILabNIC1">
+                        <li>AzSHCILabNIC1</li>
+                    </a>
+                        </ul>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/virtualMachines/openvpn">
+                openvpn
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>OPENVPN_GROUP</td>
+        <td>Standard_DS1_v2</td>
+        <td>Linux</td>
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>ManagedDisk</th>
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/openvpn_OsDisk_1_33549c8506024c0bb491daeb65c94359">
+                                openvpn_OsDisk_1_33549c8506024c0bb491daeb65c94359
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Caching</th>
+                        <td>ReadWrite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+
+        <td>
+            
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Lun</th>
+                        <th>Name</th>
+                        <th>Caching</th>
+                    </tr>
+                </thead>                
+                                <tbody>
+                    <td>0</td>
+                                            <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/aaa">
+                                aaa
+                            </a>
+                        </td>
+                    <td>None</td>
+                </tbody>
+                                <tbody>
+                    <td>1</td>
+                                            <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/bbbb">
+                                bbbb
+                            </a>
+                        </td>
+                    <td>None</td>
+                </tbody>
+                            </table>
+                    </td>
+
+        <td>
+            <ul class="list-unstyled">
+             
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/networkInterfaces/openvpn991">
+                        <li>openvpn991</li>
+                    </a>
+                        </ul>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/virtualMachines/explictproxy">
+                explictproxy
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>PROXY</td>
+        <td>Standard_DS1_v2</td>
+        <td>Linux</td>
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>ManagedDisk</th>
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/disks/explictproxy_OsDisk_1_eb87f5d036d741da92b40e330d07944c">
+                                explictproxy_OsDisk_1_eb87f5d036d741da92b40e330d07944c
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Caching</th>
+                        <td>ReadWrite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+
+        <td>
+                    </td>
+
+        <td>
+            <ul class="list-unstyled">
+             
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkInterfaces/explictproxy696">
+                        <li>explictproxy696</li>
+                    </a>
+                        </ul>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/virtualMachines/transprocy">
+                transprocy
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>PROXY</td>
+        <td>Standard_DS1_v2</td>
+        <td>Linux</td>
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>ManagedDisk</th>
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/disks/transprocy_OsDisk_1_4d8fae2c6c5e4ec0b6637d3bd245c8a8">
+                                transprocy_OsDisk_1_4d8fae2c6c5e4ec0b6637d3bd245c8a8
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Caching</th>
+                        <td>ReadWrite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+
+        <td>
+                    </td>
+
+        <td>
+            <ul class="list-unstyled">
+             
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkInterfaces/transprocy744">
+                        <li>transprocy744</li>
+                    </a>
+                        </ul>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/SYSLOG/providers/Microsoft.Compute/virtualMachines/syslog01">
+                syslog01
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>SYSLOG</td>
+        <td>Standard_B1ms</td>
+        <td>Linux</td>
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>ManagedDisk</th>
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/SYSLOG/providers/Microsoft.Compute/disks/syslog01_OsDisk_1_167589ea44f44d39824423733d2ba8a6">
+                                syslog01_OsDisk_1_167589ea44f44d39824423733d2ba8a6
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Caching</th>
+                        <td>ReadWrite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+
+        <td>
+                    </td>
+
+        <td>
+            <ul class="list-unstyled">
+             
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/syslog/providers/Microsoft.Network/networkInterfaces/syslog01733">
+                        <li>syslog01733</li>
+                    </a>
+                        </ul>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/MANAKANA/providers/Microsoft.Compute/virtualMachines/ml-wu2c09083361eabe">
+                ml-wu2c09083361eabe
+            </a>
+        </td>
+        <td>westus2</td>
+        <td>MANAKANA</td>
+        <td>STANDARD_DS3_V2</td>
+        <td>Linux</td>
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>ManagedDisk</th>
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/MANAKANA/providers/Microsoft.Compute/disks/ml-wu2c09083361eabe_osDisk">
+                                ml-wu2c09083361eabe_osDisk
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Caching</th>
+                        <td>ReadWrite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+
+        <td>
+                    </td>
+
+        <td>
+            <ul class="list-unstyled">
+             
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/manakana/providers/Microsoft.Network/networkInterfaces/ml-wu2c09083361eabe">
+                        <li>ml-wu2c09083361eabe</li>
+                    </a>
+                        </ul>
+        </td>
+    </tr>
+                    </tbody>
+                </table>
+
+                <a id="disk">
+                    <h2>Disk</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>Sku</th>
+                            <th>ManagedBy</th>
+                            <th>DiskSizeGB</th>
+                            <th>DiskState</th>   
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/MANAKANA/providers/Microsoft.Compute/disks/ml-wu2c09083361eabe_osDisk">
+                ml-wu2c09083361eabe_osDisk
+            </a>
+        </td>
+        <td>westus2</td>
+        <td>MANAKANA</td>
+        <td>Standard_LRS</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/manakana/providers/Microsoft.Compute/virtualMachines/ml-wu2c09083361eabe">
+                    ml-wu2c09083361eabe
+                </a>
+            </td>
+        
+        <td>64</td>
+        <td>Reserved</td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/AZSHCI/providers/Microsoft.Compute/disks/AzSHCIHost001_OsDisk_1_4c25b38d06b0404283c92f0c6306e7ac">
+                AzSHCIHost001_OsDisk_1_4c25b38d06b0404283c92f0c6306e7ac
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>AZSHCI</td>
+        <td>StandardSSD_LRS</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Compute/virtualMachines/AzSHCIHost001">
+                    AzSHCIHost001
+                </a>
+            </td>
+        
+        <td>127</td>
+        <td>Reserved</td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/aaa">
+                aaa
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>OPENVPN_GROUP</td>
+        <td>StandardSSD_LRS</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Compute/virtualMachines/openvpn">
+                    openvpn
+                </a>
+            </td>
+        
+        <td>4</td>
+        <td>Reserved</td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/bbbb">
+                bbbb
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>OPENVPN_GROUP</td>
+        <td>StandardSSD_LRS</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Compute/virtualMachines/openvpn">
+                    openvpn
+                </a>
+            </td>
+        
+        <td>4</td>
+        <td>Reserved</td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/openvpn_OsDisk_1_33549c8506024c0bb491daeb65c94359">
+                openvpn_OsDisk_1_33549c8506024c0bb491daeb65c94359
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>OPENVPN_GROUP</td>
+        <td>StandardSSD_LRS</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Compute/virtualMachines/openvpn">
+                    openvpn
+                </a>
+            </td>
+        
+        <td>32</td>
+        <td>Reserved</td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/disks/explictproxy_OsDisk_1_eb87f5d036d741da92b40e330d07944c">
+                explictproxy_OsDisk_1_eb87f5d036d741da92b40e330d07944c
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>PROXY</td>
+        <td>StandardSSD_LRS</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Compute/virtualMachines/explictproxy">
+                    explictproxy
+                </a>
+            </td>
+        
+        <td>30</td>
+        <td>Reserved</td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/disks/transprocy_OsDisk_1_4d8fae2c6c5e4ec0b6637d3bd245c8a8">
+                transprocy_OsDisk_1_4d8fae2c6c5e4ec0b6637d3bd245c8a8
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>PROXY</td>
+        <td>StandardSSD_LRS</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Compute/virtualMachines/transprocy">
+                    transprocy
+                </a>
+            </td>
+        
+        <td>30</td>
+        <td>Attached</td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/SYSLOG/providers/Microsoft.Compute/disks/syslog01_OsDisk_1_167589ea44f44d39824423733d2ba8a6">
+                syslog01_OsDisk_1_167589ea44f44d39824423733d2ba8a6
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>SYSLOG</td>
+        <td>StandardSSD_LRS</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/syslog/providers/Microsoft.Compute/virtualMachines/syslog01">
+                    syslog01
+                </a>
+            </td>
+        
+        <td>30</td>
+        <td>Reserved</td>
+    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
