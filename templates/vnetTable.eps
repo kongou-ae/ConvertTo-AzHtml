@@ -1,0 +1,62 @@
+    <tr>
+        <td><%= $Name %></td>
+        <td><%= $Location %></td>
+        <td><%= $ResourceGroupName %></td>
+        
+        <% if ($AddressSpace.count -eq 1) { -%>
+            <td><%= $AddressSpace %></td>
+        <% } else { -%>
+            <td>
+                <ul class="list-unstyled">
+                    <% $AddressSpace | each { -%> 
+                        <li><%= $_ %></li>
+                    <% } -%>
+                </ul>
+            </td>
+        <% } -%>
+
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NetworkSecurityGroup</th>
+                        <th>RouteTable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <% $Subnets | each { -%> 
+                    <tr>
+                        <td><%= $_.Name %></td>
+                        <td><%= $_.AddressPrefix %></td>
+
+                        <% if ( $_.NetworkSecurityGroup.Id -ne $null) { -%>
+                            <% $_.NetworkSecurityGroup.Id -Match "networkSecurityGroups/(.*)?" -%>
+                            <td>
+                                <a href="#<%= $_.NetworkSecurityGroup.Id %>">
+                                    <%= $Matches[1] %>
+                                </a>
+                            </td>
+                        <% } else { -%>
+                            <td>
+                            </td>  
+                        <% } -%>
+                        
+                        <% if ( $_.RouteTable.Id -ne $null) { -%>
+                            <% $_.RouteTable.Id -Match "RouteTables/(.*)?" -%>
+                            <td>
+                                <a href="#<%= $_.RouteTable.Id %>">
+                                    <%= $Matches[1] %>
+                                </a>
+                            </td>
+                        <% } else { -%>
+                            <td>
+                            </td>  
+                        <% } -%>
+                    </tr>
+                <% } -%>
+                </tbody>
+            </table>
+        </td>
+    </tr>

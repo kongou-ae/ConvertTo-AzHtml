@@ -1,0 +1,72 @@
+    <tr>
+        <td>
+            <a id="<%= $Id %>">
+                <%= $Name %>
+            </a>
+        </td>
+        <td><%= $Location %></td>
+        <td><%= $ResourceGroupName %></td>
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Access</th>
+                    </tr>
+                </thead>
+                <% $SecurityRules | each { -%>
+                <tbody>
+                    <td><%= $_.Direction %></td>
+                    <td><%= $_.Priority %></td>
+                    <td><%= $_.Name %></td>
+
+                    <% if ($_.DestinationPortRange.count -eq 1) { -%>
+                        <td><%= $_.DestinationPortRange %></td>
+                    <% } else { -%>
+                        <td>
+                        <ul class="list-unstyled">
+                        <% $_.DestinationPortRange | each { -%> 
+                            <li><%= $_ %></li>
+                        <% } -%>
+                        </ul>
+                        </td>
+                    <% } -%>
+                    
+                    <td><%= $_.Protocol %></td>
+
+                    <% if ($_.SourceAddressPrefix.count -eq 1) { -%>
+                        <td><%= $_.SourceAddressPrefix %></td>
+                    <% } else { -%>
+                        <td>
+                        <ul class="list-unstyled">
+                        <% $_.SourceAddressPrefix | each { -%> 
+                            <li><%= $_ %></li>
+                        <% } -%>
+                        </ul>
+                        </td>
+                    <% } -%>
+
+                    <% if ($_.DestinationAddressPrefix.count -eq 1) { -%>
+                        <td><%= $_.DestinationAddressPrefix %></td>
+                    <% } else { -%>
+                        <td>
+                        <ul class="list-unstyled">
+                        <% $_.DestinationAddressPrefix | each { -%> 
+                            <li><%= $_ %></li>
+                        <% } -%>
+                        </ul>
+                        </td>
+                    <% } -%>
+
+                    <td><%= $_.Access %></td>
+                </tbody>
+                <% } -%>
+            </table>
+        </td>
+    </tr>

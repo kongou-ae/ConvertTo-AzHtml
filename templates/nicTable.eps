@@ -1,0 +1,36 @@
+    <tr>
+        <td>
+            <a id="<%= $Id %>">
+                <%= $Name %>
+            </a>
+        </td>
+        <td><%= $Location %></td>
+        <td><%= $ResourceGroupName %></td>
+        <td><%= $IpConfigurations[0].PrivateIpAddress %></td>
+
+        <% if ($DnsSettings.DnsServers.count -eq 1) { -%>
+            <td><%= $DnsSettings.DnsServers %></td>
+        <% } else { -%>
+            <td>
+                <ul class="list-unstyled">
+                    <% $DnsSettings.DnsServers | each { -%> 
+                        <li><%= $_ %></li>
+                    <% } -%>
+                </ul>
+            </td>
+        <% } -%>
+
+        <td><%= $EnableIPForwarding %></td>
+
+        <% if ( $NetworkSecurityGroup.Id -ne $null) { -%>
+            <% $NetworkSecurityGroup.Id -Match "networkSecurityGroups/(.*)?" -%>
+            <td>
+                <a href="#<%= $NetworkSecurityGroup.Id %>">
+                    <%= $Matches[1] %>
+                </a>
+            </td>
+        <% } else { -%>
+            <td>
+            </td>  
+        <% } -%>
+    </tr>

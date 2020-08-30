@@ -1,0 +1,32 @@
+    <tr>
+        <td>
+            <a id="<%= $Id %>">
+                <%= $Name %>
+            </a>
+        </td>
+        <td><%= $Location %></td>
+        <td><%= $ResourceGroupName %></td>
+        
+        <td>
+            <% if ( $Routes.count -ne 0 ) { -%>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NextHopType</th>
+                        <th>NextHopIpAddress</th>
+                    </tr>
+                </thead>
+                <% $Routes | each { -%>
+                    <tbody>
+                        <td><%= $_.Name %></td>
+                        <td><%= $_.AddressPrefix %></td>
+                        <td><%= $_.NextHopType %></td>
+                        <td><%= $_.NextHopIpAddress %></td>
+                    </tbody>
+                <% } -%>
+            <% } -%>
+            </table>
+        </td>
+    </tr>

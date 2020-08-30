@@ -1,0 +1,67 @@
+    <tr>
+        <td>
+            <a id="<%= $Id %>">
+                <%= $Name %>
+            </a>
+        </td>
+        <td><%= $Location %></td>
+        <td><%= $ResourceGroupName %></td>
+        <td><%= $VmSize %></td>
+        <td><%= $OsType %></td>
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>ManagedDisk</th>
+                        <% $OsDisk.ManagedDisk.Id -Match "disks/(.*)?" -%>
+                        <td>
+                            <a href="#<%= $OsDisk.ManagedDisk.Id %>">
+                                <%= $Matches[1] %>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Caching</th>
+                        <td><%= $OsDisk.Caching %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+
+        <td>
+            <% if ( $DataDisks.count -ne 0 ) { %>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Lun</th>
+                        <th>Name</th>
+                        <th>Caching</th>
+                    </tr>
+                </thead>                
+                <% $DataDisks | each { -%>
+                <tbody>
+                    <td><%= $_.Lun %></td>
+                    <% $_.ManagedDisk.Id -Match "Microsoft.Compute/disks/(.*)?" -%>
+                        <td>
+                            <a href="#<%= $_.ManagedDisk.Id %>">
+                                <%= $Matches[1] %>
+                            </a>
+                        </td>
+                    <td><%= $_.Caching %></td>
+                </tbody>
+                <% } -%>
+            </table>
+            <% } -%>
+        </td>
+
+        <td>
+            <ul class="list-unstyled">
+            <% $NetworkInterfaces | each { -%> 
+                <% $_.Id -Match "NetworkInterfaces/(.*)?" -%>
+                    <a href="#<%= $_.Id %>">
+                        <li><%= $Matches[1] %></li>
+                    </a>
+            <% } -%>
+            </ul>
+        </td>
+    </tr>

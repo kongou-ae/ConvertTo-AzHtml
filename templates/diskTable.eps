@@ -1,0 +1,25 @@
+    <tr>
+        <td>
+            <a id="<%= $Id %>">
+                <%= $Name %>
+            </a>
+        </td>
+        <td><%= $Location %></td>
+        <td><%= $ResourceGroupName %></td>
+        <td><%= $Sku.Name %></td>
+
+        <% if ( $ManagedBy -ne $null) { -%>
+            <% $ManagedBy -Match "virtualMachines/(.*)?" -%>
+            <td>
+                <a href="#<%= $ManagedBy %>">
+                    <%= $Matches[1] %>
+                </a>
+            </td>
+        <% } else { -%>
+            <td>
+            </td>  
+        <% } -%>
+
+        <td><%= $DiskSizeGB %></td>
+        <td><%= $DiskState %></td>
+    </tr>
