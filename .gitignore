@@ -1,3 +1,4 @@
-*.html
-!template/index.html
+
+!templates/index.html
 !sample.html
+*.html
