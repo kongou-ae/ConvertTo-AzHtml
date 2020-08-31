@@ -8,6 +8,32 @@
         <td><%= $ResourceGroupName %></td>
         <td><%= $VmSize %></td>
         <td><%= $OsType %></td>
+
+        <td>
+            <% if ( $imageReference -ne $null ) { -%>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Publisher</th>
+                        <td><%= $imageReference.Publisher %></td>
+                    </tr>
+                    <tr>
+                        <th>Offer</th>
+                        <td><%= $imageReference.Offer %></td>
+                    </tr>
+                    <tr>
+                        <th>Sku</th>
+                        <td><%= $imageReference.Sku %></td>
+                    </tr>
+                    <tr>
+                        <th>ExactVersion</th>
+                        <td><%= $imageReference.ExactVersion %></td>
+                    </tr>
+                </tbody>
+            </table>
+            <% } -%>
+        </td>
+
         <td>
             <table>
                 <tbody>
