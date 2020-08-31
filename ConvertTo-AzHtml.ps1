@@ -39,6 +39,10 @@ Write-log "Get-AzDisk"
 $allDisks = Get-AzDisk
 $allDisksHtml = ""
 
+Write-Log "Get-AzPublicIpAddress"
+$allPips = Get-AzPublicIpAddress
+$allPipsHtml = ""
+
 # Virtual Network
 $allVnets | ForEach-Object {
     $row = invoke-EpsTemplate -Path .\templates\vnetTable.eps -safe -Binding @{
@@ -98,6 +102,24 @@ $allRoutes | ForEach-Object {
 }
 
 $rootHtml = $rootHtml -replace "<% allRouteTables -%>",$allRouteTableHtml
+
+# Public IP Address
+$allPips | ForEach-Object {
+    $row = Invoke-EpsTemplate -Path .\templates\pipTable.eps -safe -Binding @{
+        Name = $_.Name
+        Location = $_.Location
+        ResourceGroupName = $_.ResourceGroupName
+        Sku = $_.Sku.Name
+        Version = $_.PublicIpAddressVersion
+        AllocationMethod = $_.PublicIpAllocationMethod
+        IpAddress = $_.IpAddress
+        DnsSettings = $_.DnsSettings
+        Id = $_.Id
+    }
+    $allPipsHtml += $row
+}
+
+$rootHtml = $rootHtml -replace "<% allPips -%>",$allPipsHtml
 
 # Virtual Machine
 
