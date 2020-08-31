@@ -6,8 +6,41 @@
         </td>
         <td><%= $Location %></td>
         <td><%= $ResourceGroupName %></td>
-        <td><%= $IpConfigurations[0].PrivateIpAddress %></td>
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>PrivateIpAddress</th>
+                        <th>Version</th>
+                        <th>AllocationMethod</th>
+                        <th>PublicIpAddress</th>                        
+                    </tr>
+                </thead>                
+            
+                <% $IpConfigurations | each { -%>
+                    <tbody>
+                        <% $_.Id -Match "ipConfigurations/(.*)?" -%>
+                        <td>
+                            <a href="#<%= $_.Id %>">
+                                <%= $Matches[1] %>
+                            </a>
+                        </td>
+                        <td><%= $_.PrivateIpAddress %></td>
+                        <td><%= $_.PrivateIpAddressVersion %></td>
+                        <td><%= $_.PrivateIpAllocationMethod %></td>
 
+                        <% $_.PublicIpAddress.Id -Match "publicIPAddresses/(.*)?" -%>
+                        <td>
+                            <a href="#<%= $_.PublicIpAddress.Id %>">
+                                <%= $Matches[1] %>
+                            </a>
+                        </td>
+
+                    </tbody>
+                <% } -%>
+            </table>
+        </td>
         <% if ($DnsSettings.DnsServers.count -eq 1) { -%>
             <td><%= $DnsSettings.DnsServers %></td>
         <% } else { -%>
