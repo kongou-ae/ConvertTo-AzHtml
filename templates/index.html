@@ -36,6 +36,7 @@
                         <a class="dropdown-item" href="#nic">Network Interface</a>
                         <a class="dropdown-item" href="#nsg">Network Security Group</a>
                         <a class="dropdown-item" href="#routeTable">Route Table</a>
+                        <a class="dropdown-item" href="#pip">Public IP Address</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -123,6 +124,27 @@
                     </thead>
                     <tbody>
                         <% allRouteTables -%>
+                    </tbody>
+                </table>
+
+                <a id="pip">
+                    <h2>Public IP Address</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>Sku</th>
+                            <th>Version</th>
+                            <th>AllocationMethod</th>
+                            <th>IpAddress</th>
+                            <th>DnsSettings</th>                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allPips -%>
                     </tbody>
                 </table>
 
