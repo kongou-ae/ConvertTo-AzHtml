@@ -47,6 +47,9 @@ Write-Log "Get-AzStorageAccount"
 $allStorageAccounts = Get-AzStorageAccount
 $allStorageAccountsHtml = ""
 
+Write-Log "Get-AzAvailabilitySet"
+$allAvailabilitySets = Get-AzAvailabilitySet
+$allAvailabilitySetsHtml = ""
 
 # Virtual Network
 $allVnets | ForEach-Object {
@@ -72,7 +75,7 @@ $allNics | ForEach-Object {
         DnsSettings = $_.DnsSettings
         EnableIPForwarding = $_.EnableIPForwarding
         NetworkSecurityGroup = $_.NetworkSecurityGroup
-        Id = $_.Id
+        Id = $_.Id.ToLower()
     }
     $allNicsHtml += $row
 }
@@ -86,7 +89,7 @@ $allNsgs | ForEach-Object {
         Location = $_.Location
         ResourceGroupName = $_.ResourceGroupName
         SecurityRules = $_.SecurityRules | Sort-Object Direction,Priority 
-        Id = $_.Id        
+        Id = $_.Id.ToLower()        
     }
     $allNsgsHtml += $row
 }
@@ -101,7 +104,7 @@ $allRoutes | ForEach-Object {
         ResourceGroupName = $_.ResourceGroupName
         Routes = $_.Routes
         Subnets = $_.Subnets
-        Id = $_.Id
+        Id = $_.Id.ToLower()
     }
     $allRouteTableHtml += $row
 }
@@ -119,7 +122,7 @@ $allPips | ForEach-Object {
         AllocationMethod = $_.PublicIpAllocationMethod
         IpAddress = $_.IpAddress
         DnsSettings = $_.DnsSettings
-        Id = $_.Id
+        Id = $_.Id.ToLower()
     }
     $allPipsHtml += $row
 }
@@ -139,7 +142,7 @@ $allVms | ForEach-Object {
         ImageReference = $_.StorageProfile.ImageReference
         OsDisk = $_.StorageProfile.OsDisk   
         DataDisks = $_.StorageProfile.DataDisks
-        Id = $_.Id
+        Id = $_.Id.ToLower()
     }
     $allVmsHtml += $row
 }
@@ -156,12 +159,29 @@ $allDisks | ForEach-Object {
         ManagedBy = $_.ManagedBy
         DiskSizeGB = $_.DiskSizeGB
         DiskState = $_.DiskState
-        Id = $_.Id
+        Id = $_.Id.ToLower()
     }
     $allDisksHtml += $row
 }
 
 $rootHtml = $rootHtml -replace "<% allDisks -%>",$allDisksHtml
+
+# Availability Set
+$allAvailabilitySets | ForEach-Object {
+    $row = Invoke-EpsTemplate -Path .\templates\avsetTable.eps -safe -Binding @{
+        Name = $_.Name
+        Location = $_.Location
+        ResourceGroupName = $_.ResourceGroupName
+        FaultDomain = $_.PlatformFaultDomainCount
+        UpdateDomain = $_.PlatformUpdateDomainCount
+        VirtualMachinesReferences = $_.VirtualMachinesReferences
+        Id = $_.Id.ToLower()
+    }
+    $allAvailabilitySetsHtml += $row
+
+}
+
+$rootHtml = $rootHtml -replace "<% allAvset -%>",$allAvailabilitySetsHtml
 
 # Storage account
 $allStorageAccounts | ForEach-Object {
@@ -177,7 +197,7 @@ $allStorageAccounts | ForEach-Object {
         SecondaryLocation = $_.SecondaryLocation
         NetworkRuleSet = $_.NetworkRuleSet
         EnableHttpsTrafficOnly = $_.EnableHttpsTrafficOnly
-        Id = $_.Id
+        Id = $_.Id.ToLower()
     }
     $allStorageAccountsHtml += $row
 }
