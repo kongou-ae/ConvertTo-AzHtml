@@ -22,7 +22,7 @@
                     <tbody>
                         <% $_.Id -Match "ipConfigurations/(.*)?" -%>
                         <td>
-                            <a href="#<%= $_.Id %>">
+                            <a href="#<%= $_.Id.ToLower() %>">
                                 <%= $Matches[1] %>
                             </a>
                         </td>
@@ -32,7 +32,7 @@
 
                         <% $_.PublicIpAddress.Id -Match "publicIPAddresses/(.*)?" -%>
                         <td>
-                            <a href="#<%= $_.PublicIpAddress.Id %>">
+                            <a href="#<%= $_.PublicIpAddress.Id.ToLower() %>">
                                 <%= $Matches[1] %>
                             </a>
                         </td>
@@ -58,7 +58,7 @@
         <% if ( $NetworkSecurityGroup.Id -ne $null) { -%>
             <% $NetworkSecurityGroup.Id -Match "networkSecurityGroups/(.*)?" -%>
             <td>
-                <a href="#<%= $NetworkSecurityGroup.Id %>">
+                <a href="#<%= $NetworkSecurityGroup.Id.ToLower() %>">
                     <%= $Matches[1] %>
                 </a>
             </td>

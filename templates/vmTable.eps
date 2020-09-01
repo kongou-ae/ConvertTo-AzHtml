@@ -41,7 +41,7 @@
                         <th>ManagedDisk</th>
                         <% $OsDisk.ManagedDisk.Id -Match "disks/(.*)?" -%>
                         <td>
-                            <a href="#<%= $OsDisk.ManagedDisk.Id %>">
+                            <a href="#<%= $OsDisk.ManagedDisk.Id.ToLower() %>">
                                 <%= $Matches[1] %>
                             </a>
                         </td>
@@ -69,7 +69,7 @@
                     <td><%= $_.Lun %></td>
                     <% $_.ManagedDisk.Id -Match "Microsoft.Compute/disks/(.*)?" -%>
                         <td>
-                            <a href="#<%= $_.ManagedDisk.Id %>">
+                            <a href="#<%= $_.ManagedDisk.Id.ToLower() %>">
                                 <%= $Matches[1] %>
                             </a>
                         </td>
@@ -84,7 +84,7 @@
             <ul class="list-unstyled">
             <% $NetworkInterfaces | each { -%> 
                 <% $_.Id -Match "NetworkInterfaces/(.*)?" -%>
-                    <a href="#<%= $_.Id %>">
+                    <a href="#<%= $_.Id.ToLower() %>">
                         <li><%= $Matches[1] %></li>
                     </a>
             <% } -%>

@@ -58,7 +58,7 @@
                                 <td><%= $_.Action %></td>
                                 <% $_.VirtualNetworkResourceId -Match "/subnets/(.*)?" -%>
                                 <td>
-                                    <a href="#<%= $_.VirtualNetworkResourceId %>">
+                                    <a href="#<%= $_.VirtualNetworkResourceId.ToLower() %>">
                                         <%= $Matches[1] %>
                                     </a>
                                 </td>

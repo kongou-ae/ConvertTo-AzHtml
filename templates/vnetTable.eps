@@ -29,7 +29,7 @@
                 <% $Subnets | each { -%> 
                     <tr>
                         <td>
-                            <a id="<%= $_.Id %>">
+                            <a id="<%= $_.Id.ToLower() %>">
                                 <%= $_.Name %>
                             </a>
                         </td>
@@ -38,7 +38,7 @@
                         <% if ( $_.NetworkSecurityGroup.Id -ne $null) { -%>
                             <% $_.NetworkSecurityGroup.Id -Match "networkSecurityGroups/(.*)?" -%>
                             <td>
-                                <a href="#<%= $_.NetworkSecurityGroup.Id %>">
+                                <a href="#<%= $_.NetworkSecurityGroup.Id.ToLower() %>">
                                     <%= $Matches[1] %>
                                 </a>
                             </td>
@@ -50,7 +50,7 @@
                         <% if ( $_.RouteTable.Id -ne $null) { -%>
                             <% $_.RouteTable.Id -Match "RouteTables/(.*)?" -%>
                             <td>
-                                <a href="#<%= $_.RouteTable.Id %>">
+                                <a href="#<%= $_.RouteTable.Id.ToLower() %>">
                                     <%= $Matches[1] %>
                                 </a>
                             </td>

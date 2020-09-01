@@ -11,7 +11,7 @@
         <% if ( $ManagedBy -ne $null) { -%>
             <% $ManagedBy -Match "virtualMachines/(.*)?" -%>
             <td>
-                <a href="#<%= $ManagedBy %>">
+                <a href="#<%= $ManagedBy.ToLower() %>">
                     <%= $Matches[1] %>
                 </a>
             </td>

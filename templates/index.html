@@ -14,11 +14,17 @@
         table {
             font-size: 14px;
         }
+
         .table {
-            margin-bottom: initial;
+            margin-bottom: 0rem;
         }
+
         ul {
             margin-bottom: initial;
+        }
+
+        hr {
+            border-top: 2px solid rgba(0,0,0,.1);
         }
     </style>
     <script type="text/javascript" language="JavaScript">
@@ -52,6 +58,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#vm">Virtual Machine</a>
                         <a class="dropdown-item" href="#disk">Disk</a>
+                        <a class="dropdown-item" href="#avset">Availability Set</a>
                     </div>
                 </li>
 
@@ -88,7 +95,7 @@
                         <% allVnets -%>
                     </tbody>
                 </table>
-            
+                <hr/>
                 <a id="nic">
                     <h2>Network Interface</h2>
                 </a>
@@ -108,7 +115,7 @@
                         <% allNics -%>
                     </tbody>
                 </table>
-            
+                <hr/>
                 <a id="nsg">
                     <h2>Network Security Group</h2>
                 </a>
@@ -125,7 +132,7 @@
                         <% allNsgs -%>
                     </tbody>
                 </table>
-
+                <hr/>
                 <a id="routeTable">
                     <h2>Route table</h2>
                 </a>
@@ -142,7 +149,7 @@
                         <% allRouteTables -%>
                     </tbody>
                 </table>
-
+                <hr/>
                 <a id="pip">
                     <h2>Public IP Address</h2>
                 </a>
@@ -163,7 +170,7 @@
                         <% allPips -%>
                     </tbody>
                 </table>
-
+                <hr/>
                 <a id="vm">
                     <h2>Virtual Machine</h2>
                 </a>
@@ -185,7 +192,7 @@
                         <% allVms -%>
                     </tbody>
                 </table>
-
+                <hr/>
                 <a id="disk">
                     <h2>Disk</h2>
                 </a>
@@ -205,7 +212,26 @@
                         <% allDisks -%>
                     </tbody>
                 </table>
-
+                <hr/>
+                <a id="avset">
+                    <h2>Availability Set</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>FaultDomain</th>
+                            <th>UpdateDomain</th>
+                            <th>VirtualMachinesReferences</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allAvset -%>
+                    </tbody>
+                </table>
+                <hr/>
                 <a id="storageAccount">
                     <h2>Storage Account</h2>
                 </a>

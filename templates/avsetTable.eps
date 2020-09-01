@@ -1,0 +1,22 @@
+    <tr>
+        <td>
+            <a id="<%= $Id %>">
+                <%= $Name %>
+            </a>
+        </td>
+        <td><%= $Location %></td>
+        <td><%= $ResourceGroupName %></td>
+        <td><%= $FaultDomain %></td>
+        <td><%= $UpdateDomain %></td>
+
+        <td>
+            <% if ($VirtualMachinesReferences.count -ne 0) { -%> 
+                <ul class="list-unstyled">
+                    <% $VirtualMachinesReferences | each { -%>
+                        <% $_.Id -Match "/virtualMachines/(.*)?" -%>
+                        <li><a href="#<%= $_.Id.ToLower() %>"><%= $Matches[1] %></a></li>
+                    <% } -%>
+                </ul>
+            <% } -%>
+        </td>
+    </tr>
