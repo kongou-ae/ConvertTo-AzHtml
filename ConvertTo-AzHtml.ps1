@@ -143,6 +143,8 @@ $allVms | ForEach-Object {
         OsDisk = $_.StorageProfile.OsDisk   
         DataDisks = $_.StorageProfile.DataDisks
         Id = $_.Id.ToLower()
+        AvailabilitySetReference = $_.AvailabilitySetReference
+        Zones = $_.Zones
     }
     $allVmsHtml += $row
 }
