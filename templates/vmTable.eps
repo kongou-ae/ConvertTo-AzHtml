@@ -7,8 +7,23 @@
         <td><%= $Location %></td>
         <td><%= $ResourceGroupName %></td>
         <td><%= $VmSize %></td>
-        <td><%= $OsType %></td>
 
+        <td>
+            <% if ( $AvailabilitySetReference -ne $null ) { -%>
+                <% $AvailabilitySetReference.Id -Match "/availabilitySets/(.*)?" -%>
+                <a href="#<%= $AvailabilitySetReference.Id.ToLower() %>">
+                    <%= $Matches[1] %>
+                </a>
+            <% } -%>
+        </td>
+
+        <td>
+            <% if ( $Zones.count -ne 0 ) { -%>
+                <%= $Zones %>
+            <% } -%>
+        </td>
+
+        <td><%= $OsType %></td>
         <td>
             <% if ( $imageReference -ne $null ) { -%>
             <table>
