@@ -1,0 +1,76 @@
+    <tr>
+        <td>
+            <a id="<%= $Id %>">
+                <%= $Name %>
+            </a>
+        </td>
+        <td><%= $Location %></td>
+        <td><%= $ResourceGroupName %></td>
+        <td><%= $Sku %></td>        
+        <td><%= $Kind %></td>
+        <td><%= $AccessTier %></td>
+        <td><%= $CustomDomain.Name %></td>
+        <td><%= $PrimaryLocation %></td>
+        <td><%= $SecondaryLocation %></td>
+        <td><%= $EnableHttpsTrafficOnly %></td>
+
+        <td>
+            <table class="table table-sm table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                        <% if ( $NetworkRuleSet.IpRules.count -ne 0 ) { %>
+                        <table class="table table-sm table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Action</th>
+                                    <th>IPAddressOrRange</th>
+                                </tr>
+                            </thead>                
+                            <% $NetworkRuleSet.IpRules | each { -%>
+                            <tbody>
+                                <td><%= $_.Action %></td>
+                                <td><%= $_.IPAddressOrRange %></td>
+                            </tbody>
+                            <% } -%>
+                        </table>
+                        <% } -%>
+                    </td>
+
+                    <td>
+                        <% if ( $NetworkRuleSet.VirtualNetworkRules.count -ne 0 ) { %>
+                        <table class="table table-sm table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Action</th>
+                                    <th>VirtualNetwork</th>
+                                </tr>
+                            </thead>                
+                            <% $NetworkRuleSet.VirtualNetworkRules | each { -%>
+                            <tbody>
+                                <td><%= $_.Action %></td>
+                                <% $_.VirtualNetworkResourceId -Match "/subnets/(.*)?" -%>
+                                <td>
+                                    <a href="#<%= $_.VirtualNetworkResourceId %>">
+                                        <%= $Matches[1] %>
+                                    </a>
+                                </td>
+                            </tbody>
+                            <% } -%>
+                        </table>
+                        <% } -%>
+                    </td>
+
+                    <td><%= $NetworkRuleSet.Bypass %></td>
+                    <td><%= $NetworkRuleSet.DefaultAction %></td>
+                </tbody>
+            </table>
+        </td>
+    </tr>

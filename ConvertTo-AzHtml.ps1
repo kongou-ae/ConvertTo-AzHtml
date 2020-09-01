@@ -43,6 +43,11 @@ Write-Log "Get-AzPublicIpAddress"
 $allPips = Get-AzPublicIpAddress
 $allPipsHtml = ""
 
+Write-Log "Get-AzStorageAccount"
+$allStorageAccounts = Get-AzStorageAccount
+$allStorageAccountsHtml = ""
+
+
 # Virtual Network
 $allVnets | ForEach-Object {
     $row = invoke-EpsTemplate -Path .\templates\vnetTable.eps -safe -Binding @{
@@ -142,7 +147,6 @@ $allVms | ForEach-Object {
 $rootHtml = $rootHtml -replace "<% allVms -%>",$allVmsHtml
 
 # Disk
-
 $allDisks | ForEach-Object {
     $row = Invoke-EpsTemplate -Path .\templates\diskTable.eps -safe -Binding @{
         Name = $_.Name
@@ -158,6 +162,28 @@ $allDisks | ForEach-Object {
 }
 
 $rootHtml = $rootHtml -replace "<% allDisks -%>",$allDisksHtml
+
+# Storage account
+$allStorageAccounts | ForEach-Object {
+    $row = Invoke-EpsTemplate -Path .\templates\storageAccountTable.eps -safe -Binding @{
+        Name = $_.StorageAccountName
+        Location = $_.Location
+        ResourceGroupName = $_.ResourceGroupName
+        Sku = $_.Sku.Name
+        Kind = $_.Kind
+        AccessTier = $_.AccessTier
+        CustomDomain = $_.CustomDomain
+        PrimaryLocation = $_.PrimaryLocation
+        SecondaryLocation = $_.SecondaryLocation
+        NetworkRuleSet = $_.NetworkRuleSet
+        EnableHttpsTrafficOnly = $_.EnableHttpsTrafficOnly
+        Id = $_.Id
+    }
+    $allStorageAccountsHtml += $row
+}
+
+$rootHtml = $rootHtml -replace "<% allStorageAccounts -%>",$allStorageAccountsHtml
+
 
 $filename = "output_" + (Get-AzContext).Subscription.Id + "_" + (Get-date -format yyyy-MMdd-HHmm) + ".html"
 $rootHtml | out-file $filename
