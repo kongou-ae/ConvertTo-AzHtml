@@ -14,6 +14,12 @@
         table {
             font-size: 14px;
         }
+        .table {
+            margin-bottom: initial;
+        }
+        ul {
+            margin-bottom: initial;
+        }
     </style>
     <script type="text/javascript" language="JavaScript">
         window.addEventListener("hashchange", function() { scrollBy(0, -70) })
@@ -48,6 +54,16 @@
                         <a class="dropdown-item" href="#disk">Disk</a>
                     </div>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Storage
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#storageAccount">Storage Account</a>
+                    </div>
+                </li>
+
             </ul>
         </div>
     </nav>
@@ -190,8 +206,35 @@
                     </tbody>
                 </table>
 
+                <a id="storageAccount">
+                    <h2>Storage Account</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>Sku</th>
+                            <th>Kind</th>
+                            <th>AccessTier</th>
+                            <th>CustomDomain</th>
+                            <th>PrimaryLocation</th>
+                            <th>SecondaryLocation</th>
+                            <th>EnableHttpsTrafficOnly</th>
+                            <th>NetworkRuleSet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allStorageAccounts -%>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+
+
+
+
 </body>
 </html>

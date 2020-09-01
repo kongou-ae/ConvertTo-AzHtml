@@ -28,7 +28,11 @@
                 <tbody>
                 <% $Subnets | each { -%> 
                     <tr>
-                        <td><%= $_.Name %></td>
+                        <td>
+                            <a id="<%= $_.Id %>">
+                                <%= $_.Name %>
+                            </a>
+                        </td>
                         <td><%= $_.AddressPrefix %></td>
 
                         <% if ( $_.NetworkSecurityGroup.Id -ne $null) { -%>
