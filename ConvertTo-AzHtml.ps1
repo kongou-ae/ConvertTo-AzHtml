@@ -51,6 +51,10 @@ Write-Log "Get-AzAvailabilitySet"
 $allAvailabilitySets = Get-AzAvailabilitySet
 $allAvailabilitySetsHtml = ""
 
+Write-Log "Get-AzRecoveryServicesVault"
+$allRecoveryServicesVaults = Get-AzRecoveryServicesVault
+$allRecoveryServicesVaultsHtml = ""
+
 # Virtual Network
 $allVnets | ForEach-Object {
     $row = invoke-EpsTemplate -Path .\templates\vnetTable.eps -safe -Binding @{
@@ -207,6 +211,22 @@ $allStorageAccounts | ForEach-Object {
 
 $rootHtml = $rootHtml -replace "<% allStorageAccounts -%>",$allStorageAccountsHtml
 
+
+# Recovery Service vaulat
+$allRecoveryServicesVaults | ForEach-Object {
+    $row = Invoke-EpsTemplate -Path .\templates\recoveryServicesVaultTable.eps -safe -Binding @{
+        Name = $_.Name
+        Location = $_.Location
+        ResourceGroupName = $_.ResourceGroupName
+        BackupStorageRedundancy = (Get-AzRecoveryServicesBackupProperties -Vault $_).BackupStorageRedundancy
+        EnhancedSecurityState = (Get-AzRecoveryServicesVaultProperty -VaultId $_.Id).EnhancedSecurityState
+        SoftDeleteFeatureState = (Get-AzRecoveryServicesVaultProperty -VaultId $_.Id).SoftDeleteFeatureState
+        Id = $_.Id.ToLower()
+    }
+    $allRecoveryServicesVaultsHtml += $row
+}
+
+$rootHtml = $rootHtml -replace "<% allRecoveryServicesVaults -%>",$allRecoveryServicesVaultsHtml
 
 $filename = "output_" + (Get-AzContext).Subscription.Id + "_" + (Get-date -format yyyy-MMdd-HHmm) + ".html"
 $rootHtml | out-file $filename

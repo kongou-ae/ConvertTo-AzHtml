@@ -29,6 +29,7 @@
 
         hr {
             border-top: 2px solid rgba(0,0,0,.1);
+            width: 1300px;
         }
     </style>
     <script type="text/javascript" language="JavaScript">
@@ -72,6 +73,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#storageAccount">Storage Account</a>
+                        <a class="dropdown-item" href="#RecoveryServiceVault">Recovery Service Vault</a>
                     </div>
                 </li>
 
@@ -344,6 +346,35 @@
                         <% allStorageAccounts -%>
                     </tbody>
                 </table>
+
+                <hr/>
+                <a id="RecoveryServiceVault">
+                    <h2>Recovery Service Vault</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;width:870px;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">                        
+                        <col style="width:150px;">
+                    </colgroup>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>BackupStorageRedundancy</th>
+                            <th>EnhancedSecurityState</th>
+                            <th>SoftDeleteFeatureState</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allRecoveryServicesVaults -%>
+                    </tbody>
+                </table>
+
             </div>
         </div>
     </div>
