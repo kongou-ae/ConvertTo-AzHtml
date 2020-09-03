@@ -122,6 +122,7 @@ $allPips | ForEach-Object {
         AllocationMethod = $_.PublicIpAllocationMethod
         IpAddress = $_.IpAddress
         DnsSettings = $_.DnsSettings
+        IpConfiguration = $_.IpConfiguration.Id
         Id = $_.Id.ToLower()
     }
     $allPipsHtml += $row

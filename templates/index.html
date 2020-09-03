@@ -19,6 +19,10 @@
             margin-bottom: 0rem;
         }
 
+        td,th {
+            word-wrap:break-word;
+            font-size:90%
+        }
         ul {
             margin-bottom: initial;
         }
@@ -81,7 +85,14 @@
                 <a id="vnet">
                     <h2>Virtual Network</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:700px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -99,7 +110,16 @@
                 <a id="nic">
                     <h2>Network Interface</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:500px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -119,7 +139,13 @@
                 <a id="nsg">
                     <h2>Network Security Group</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:850px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -136,7 +162,13 @@
                 <a id="routeTable">
                     <h2>Route table</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:850px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -153,7 +185,18 @@
                 <a id="pip">
                     <h2>Public IP Address</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:70px;">
+                        <col style="width:70px;">
+                        <col style="width:110px;">
+                        <col style="width:100px;">
+                        <col style="width:110px;">
+                        <col style="width:500px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -161,8 +204,9 @@
                             <th>ResourceGroupName</th>
                             <th>Sku</th>
                             <th>Version</th>
-                            <th>AllocationMethod</th>
+                            <th>Allocation</th>
                             <th>IpAddress</th>
+                            <th>IpConfiguration</th>
                             <th>DnsSettings</th>                       
                         </tr>
                     </thead>
@@ -174,7 +218,20 @@
                 <a id="vm">
                     <h2>Virtual Machine</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:50px;">
+                        <col style="width:90px;">
+                        <col style="width:260px;">
+                        <col style="width:500px;">
+                        <col style="width:280px;">
+                        <col style="width:150px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -198,7 +255,16 @@
                 <a id="disk">
                     <h2>Disk</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:550px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:125px;">
+                        <col style="width:150px;">                        
+                        <col style="width:90px;">
+                        <col style="width:90px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -218,7 +284,15 @@
                 <a id="avset">
                     <h2>Availability Set</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;width:840;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:120px;">
+                        <col style="width:120px;">                        
+                        <col style="width:200px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -237,7 +311,20 @@
                 <a id="storageAccount">
                     <h2>Storage Account</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;width:1940px;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:100px;">                        
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:600px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>

@@ -15,7 +15,13 @@
         <td><%= $EnableHttpsTrafficOnly %></td>
 
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>IpRules</th>
@@ -27,7 +33,11 @@
                 <tbody>
                     <td>
                         <% if ( $NetworkRuleSet.IpRules.count -ne 0 ) { %>
-                        <table class="table table-sm table-bordered">
+                        <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                            <colgroup>
+                                <col style="width:60px;">
+                                <col style="width:130px;">
+                            </colgroup>
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Action</th>
@@ -46,7 +56,11 @@
 
                     <td>
                         <% if ( $NetworkRuleSet.VirtualNetworkRules.count -ne 0 ) { %>
-                        <table class="table table-sm table-bordered">
+                        <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                            <colgroup>
+                                <col style="width:60px;">
+                                <col style="width:130px;">
+                            </colgroup>
                             <thead class="thead-dark">
                                 <tr>
                                     <th>Action</th>
