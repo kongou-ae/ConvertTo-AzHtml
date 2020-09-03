@@ -7,7 +7,14 @@
         <td><%= $Location %></td>
         <td><%= $ResourceGroupName %></td>
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:60px;">
+                    <col style="width:120px;">
+                    <col style="width:110px;">
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -22,7 +29,7 @@
                     <tbody>
                         <% $_.Id -Match "ipConfigurations/(.*)?" -%>
                         <td>
-                            <a href="#<%= $_.Id.ToLower() %>">
+                            <a id="<%= $_.Id.ToLower() %>">
                                 <%= $Matches[1] %>
                             </a>
                         </td>

@@ -7,7 +7,17 @@
         <td><%= $Location %></td>
         <td><%= $ResourceGroupName %></td>
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:130px;">
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:120px;">
+                    <col style="width:70px;">                    
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Direction</th>
@@ -20,53 +30,55 @@
                         <th>Access</th>
                     </tr>
                 </thead>
-                <% $SecurityRules | each { -%>
                 <tbody>
-                    <td><%= $_.Direction %></td>
-                    <td><%= $_.Priority %></td>
-                    <td><%= $_.Name %></td>
+                <% $SecurityRules | each { -%>
+                    <tr>
+                        <td><%= $_.Direction %></td>
+                        <td><%= $_.Priority %></td>
+                        <td><%= $_.Name %></td>
 
-                    <% if ($_.DestinationPortRange.count -eq 1) { -%>
-                        <td><%= $_.DestinationPortRange %></td>
-                    <% } else { -%>
-                        <td>
-                        <ul class="list-unstyled">
-                        <% $_.DestinationPortRange | each { -%> 
-                            <li><%= $_ %></li>
+                        <% if ($_.DestinationPortRange.count -eq 1) { -%>
+                            <td><%= $_.DestinationPortRange %></td>
+                        <% } else { -%>
+                            <td>
+                            <ul class="list-unstyled">
+                            <% $_.DestinationPortRange | each { -%> 
+                                <li><%= $_ %></li>
+                            <% } -%>
+                            </ul>
+                            </td>
                         <% } -%>
-                        </ul>
-                        </td>
-                    <% } -%>
-                    
-                    <td><%= $_.Protocol %></td>
+                        
+                        <td><%= $_.Protocol %></td>
 
-                    <% if ($_.SourceAddressPrefix.count -eq 1) { -%>
-                        <td><%= $_.SourceAddressPrefix %></td>
-                    <% } else { -%>
-                        <td>
-                        <ul class="list-unstyled">
-                        <% $_.SourceAddressPrefix | each { -%> 
-                            <li><%= $_ %></li>
+                        <% if ($_.SourceAddressPrefix.count -eq 1) { -%>
+                            <td><%= $_.SourceAddressPrefix %></td>
+                        <% } else { -%>
+                            <td>
+                            <ul class="list-unstyled">
+                            <% $_.SourceAddressPrefix | each { -%> 
+                                <li><%= $_ %></li>
+                            <% } -%>
+                            </ul>
+                            </td>
                         <% } -%>
-                        </ul>
-                        </td>
-                    <% } -%>
 
-                    <% if ($_.DestinationAddressPrefix.count -eq 1) { -%>
-                        <td><%= $_.DestinationAddressPrefix %></td>
-                    <% } else { -%>
-                        <td>
-                        <ul class="list-unstyled">
-                        <% $_.DestinationAddressPrefix | each { -%> 
-                            <li><%= $_ %></li>
+                        <% if ($_.DestinationAddressPrefix.count -eq 1) { -%>
+                            <td><%= $_.DestinationAddressPrefix %></td>
+                        <% } else { -%>
+                            <td>
+                            <ul class="list-unstyled">
+                            <% $_.DestinationAddressPrefix | each { -%> 
+                                <li><%= $_ %></li>
+                            <% } -%>
+                            </ul>
+                            </td>
                         <% } -%>
-                        </ul>
-                        </td>
-                    <% } -%>
 
-                    <td><%= $_.Access %></td>
-                </tbody>
+                        <td><%= $_.Access %></td>
+                    </tr>
                 <% } -%>
+                </tbody>
             </table>
         </td>
     </tr>

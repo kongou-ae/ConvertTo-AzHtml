@@ -26,7 +26,9 @@
         <td><%= $OsType %></td>
         <td>
             <% if ( $imageReference -ne $null ) { -%>
-            <table>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
                 <tbody>
                     <tr>
                         <th>Publisher</th>
@@ -50,7 +52,9 @@
         </td>
 
         <td>
-            <table>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
                 <tbody>
                     <tr>
                         <th>ManagedDisk</th>
@@ -71,7 +75,10 @@
 
         <td>
             <% if ( $DataDisks.count -ne 0 ) { %>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:40px;">
+                <col style="width:150px;">
+                <col style="width:70px;">
                 <thead class="thead-dark">
                     <tr>
                         <th>Lun</th>

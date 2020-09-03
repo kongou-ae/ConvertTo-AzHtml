@@ -9,7 +9,12 @@
         
         <td>
             <% if ( $Routes.count -ne 0 ) { -%>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -18,14 +23,17 @@
                         <th>NextHopIpAddress</th>
                     </tr>
                 </thead>
-                <% $Routes | each { -%>
-                    <tbody>
-                        <td><%= $_.Name %></td>
-                        <td><%= $_.AddressPrefix %></td>
-                        <td><%= $_.NextHopType %></td>
-                        <td><%= $_.NextHopIpAddress %></td>
-                    </tbody>
-                <% } -%>
+                <tbody>
+                    <% $Routes | each { -%>
+                        <tr>
+                            <td><%= $_.Name %></td>
+                            <td><%= $_.AddressPrefix %></td>
+                            <td><%= $_.NextHopType %></td>
+                            <td><%= $_.NextHopIpAddress %></td>
+                        </tr>
+                    <% } -%>
+                </tbody>
+
             <% } -%>
             </table>
         </td>
