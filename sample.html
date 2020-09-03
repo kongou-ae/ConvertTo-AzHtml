@@ -14,6 +14,22 @@
         table {
             font-size: 14px;
         }
+
+        .table {
+            margin-bottom: 0rem;
+        }
+
+        td,th {
+            word-wrap:break-word;
+            font-size:90%
+        }
+        ul {
+            margin-bottom: initial;
+        }
+
+        hr {
+            border-top: 2px solid rgba(0,0,0,.1);
+        }
     </style>
     <script type="text/javascript" language="JavaScript">
         window.addEventListener("hashchange", function() { scrollBy(0, -70) })
@@ -36,6 +52,7 @@
                         <a class="dropdown-item" href="#nic">Network Interface</a>
                         <a class="dropdown-item" href="#nsg">Network Security Group</a>
                         <a class="dropdown-item" href="#routeTable">Route Table</a>
+                        <a class="dropdown-item" href="#pip">Public IP Address</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -45,8 +62,19 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#vm">Virtual Machine</a>
                         <a class="dropdown-item" href="#disk">Disk</a>
+                        <a class="dropdown-item" href="#avset">Availability Set</a>
                     </div>
                 </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Storage
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#storageAccount">Storage Account</a>
+                    </div>
+                </li>
+
             </ul>
         </div>
     </nav>
@@ -57,7 +85,14 @@
                 <a id="vnet">
                     <h2>Virtual Network</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:700px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -69,14 +104,20 @@
                     </thead>
                     <tbody>
                             <tr>
-        <td>AzSHCILabvNet</td>
-        <td>japaneast</td>
-        <td>azshci</td>
+        <td>vwanjevnet816</td>
+        <td>westus</td>
+        <td>vwanje</td>
         
-                    <td>10.0.0.0/24</td>
+                    <td>10.1.3.0/24</td>
         
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -88,17 +129,63 @@
                 <tbody>
                  
                     <tr>
-                        <td>AzSHCILabSubnet</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.network/virtualnetworks/vwanjevnet816/subnets/default">
+                                default
+                            </a>
+                        </td>
+                        <td>10.1.3.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>AzSHCILabvNet</td>
+        <td>japaneast</td>
+        <td>azshci</td>
+        
+                    <td>10.0.0.0/24</td>
+        
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NetworkSecurityGroup</th>
+                        <th>RouteTable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.network/virtualnetworks/azshcilabvnet/subnets/azshcilabsubnet">
+                                AzSHCILabSubnet
+                            </a>
+                        </td>
                         <td>10.0.0.0/24</td>
 
                                                                                 <td>
-                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Network/networkSecurityGroups/AzSHCILabNSG">
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.network/networksecuritygroups/azshcilabnsg">
                                     AzSHCILabNSG
                                 </a>
                             </td>
                                                 
                                                                                 <td>
-                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/routeTables/azfw">
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/routetables/azfw">
                                     azfw
                                 </a>
                             </td>
@@ -114,7 +201,13 @@
                     <td>192.168.212.0/24</td>
         
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -126,7 +219,11 @@
                 <tbody>
                  
                     <tr>
-                        <td>default</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/dev/providers/microsoft.network/virtualnetworks/dev-vnet/subnets/default">
+                                default
+                            </a>
+                        </td>
                         <td>192.168.212.0/24</td>
 
                                                     <td>
@@ -153,7 +250,13 @@
             </td>
         
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -165,7 +268,11 @@
                 <tbody>
                  
                     <tr>
-                        <td>EntrySubnet</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/entrysubnet">
+                                EntrySubnet
+                            </a>
+                        </td>
                         <td>10.0.1.0/24</td>
 
                                                     <td>
@@ -176,7 +283,11 @@
                                             </tr>
                  
                     <tr>
-                        <td>HASyncSubnet</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/hasyncsubnet">
+                                HASyncSubnet
+                            </a>
+                        </td>
                         <td>10.0.3.0/28</td>
 
                                                     <td>
@@ -187,7 +298,11 @@
                                             </tr>
                  
                     <tr>
-                        <td>ManagementSubnet</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/managementsubnet">
+                                ManagementSubnet
+                            </a>
+                        </td>
                         <td>10.0.4.0/28</td>
 
                                                     <td>
@@ -198,21 +313,29 @@
                                             </tr>
                  
                     <tr>
-                        <td>ProtectedSubnet</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/protectedsubnet">
+                                ProtectedSubnet
+                            </a>
+                        </td>
                         <td>10.0.5.0/24</td>
 
                                                     <td>
                             </td>  
                                                 
                                                                                 <td>
-                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/routeTables/FGTDefaultAPRouteTable">
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/routetables/fgtdefaultaproutetable">
                                     FGTDefaultAPRouteTable
                                 </a>
                             </td>
                                             </tr>
                  
                     <tr>
-                        <td>GatewaySubnet</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/gatewaysubnet">
+                                GatewaySubnet
+                            </a>
+                        </td>
                         <td>192.168.210.0/27</td>
 
                                                     <td>
@@ -223,7 +346,11 @@
                                             </tr>
                  
                     <tr>
-                        <td>AzureFirewallSubnet</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/azurefirewallsubnet">
+                                AzureFirewallSubnet
+                            </a>
+                        </td>
                         <td>10.0.0.0/24</td>
 
                                                     <td>
@@ -234,11 +361,15 @@
                                             </tr>
                  
                     <tr>
-                        <td>AzureBastionSubnet</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/azurebastionsubnet">
+                                AzureBastionSubnet
+                            </a>
+                        </td>
                         <td>10.0.6.0/24</td>
 
                                                                                 <td>
-                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/networkSecurityGroups/bastion">
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/networksecuritygroups/bastion">
                                     bastion
                                 </a>
                             </td>
@@ -248,7 +379,11 @@
                                             </tr>
                  
                     <tr>
-                        <td>appservice02</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/appservice02">
+                                appservice02
+                            </a>
+                        </td>
                         <td>10.0.8.0/27</td>
 
                                                     <td>
@@ -259,7 +394,11 @@
                                             </tr>
                  
                     <tr>
-                        <td>appservicePlink</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/appserviceplink">
+                                appservicePlink
+                            </a>
+                        </td>
                         <td>10.0.8.32/27</td>
 
                                                     <td>
@@ -270,7 +409,11 @@
                                             </tr>
                  
                     <tr>
-                        <td>nat</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/nat">
+                                nat
+                            </a>
+                        </td>
                         <td>192.168.210.32/28</td>
 
                                                     <td>
@@ -281,7 +424,11 @@
                                             </tr>
                  
                     <tr>
-                        <td>monitorplink</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/monitorplink">
+                                monitorplink
+                            </a>
+                        </td>
                         <td>10.0.8.64/27</td>
 
                                                     <td>
@@ -292,7 +439,11 @@
                                             </tr>
                  
                     <tr>
-                        <td>iaas</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/iaas">
+                                iaas
+                            </a>
+                        </td>
                         <td>10.0.7.0/24</td>
 
                                                     <td>
@@ -303,7 +454,11 @@
                                             </tr>
                  
                     <tr>
-                        <td>TransitSubnet</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/virtualnetworks/fgnew/subnets/transitsubnet">
+                                TransitSubnet
+                            </a>
+                        </td>
                         <td>10.0.2.0/24</td>
 
                                                     <td>
@@ -323,7 +478,13 @@
                     <td>172.25.2.0/24</td>
         
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -335,7 +496,11 @@
                 <tbody>
                  
                     <tr>
-                        <td>server</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/virtualnetworks/proxy/subnets/server">
+                                server
+                            </a>
+                        </td>
                         <td>172.25.2.0/28</td>
 
                                                     <td>
@@ -346,14 +511,18 @@
                                             </tr>
                  
                     <tr>
-                        <td>GatewaySubnet</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/virtualnetworks/proxy/subnets/gatewaysubnet">
+                                GatewaySubnet
+                            </a>
+                        </td>
                         <td>172.25.2.16/28</td>
 
                                                     <td>
                             </td>  
                                                 
                                                                                 <td>
-                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/routeTables/proxy">
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/routetables/proxy">
                                     proxy
                                 </a>
                             </td>
@@ -369,7 +538,13 @@
                     <td>10.1.0.0/24</td>
         
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -381,17 +556,105 @@
                 <tbody>
                  
                     <tr>
-                        <td>default</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.network/virtualnetworks/syslog-vnet/subnets/default">
+                                default
+                            </a>
+                        </td>
                         <td>10.1.0.0/24</td>
 
                                                     <td>
                             </td>  
                                                 
                                                                                 <td>
-                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/routeTables/vpn">
+                                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.network/routetables/vpn">
                                     vpn
                                 </a>
                             </td>
+                                            </tr>
+                                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>unbound-vnet</td>
+        <td>japaneast</td>
+        <td>unbound</td>
+        
+                    <td>10.1.1.0/24</td>
+        
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NetworkSecurityGroup</th>
+                        <th>RouteTable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.network/virtualnetworks/unbound-vnet/subnets/default">
+                                default
+                            </a>
+                        </td>
+                        <td>10.1.1.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
+                                            </tr>
+                                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>vwanje-vnet</td>
+        <td>japaneast</td>
+        <td>vwanje</td>
+        
+                    <td>10.1.2.0/24</td>
+        
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>AddressPrefix</th>
+                        <th>NetworkSecurityGroup</th>
+                        <th>RouteTable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                 
+                    <tr>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.network/virtualnetworks/vwanje-vnet/subnets/default">
+                                default
+                            </a>
+                        </td>
+                        <td>10.1.2.0/24</td>
+
+                                                    <td>
+                            </td>  
+                                                
+                                                    <td>
+                            </td>  
                                             </tr>
                                 </tbody>
             </table>
@@ -404,7 +667,13 @@
                     <td>10.0.0.0/16</td>
         
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -416,7 +685,11 @@
                 <tbody>
                  
                     <tr>
-                        <td>subnet01</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/whatif/providers/microsoft.network/virtualnetworks/vnet0503/subnets/subnet01">
+                                subnet01
+                            </a>
+                        </td>
                         <td>10.0.0.0/24</td>
 
                                                     <td>
@@ -427,7 +700,11 @@
                                             </tr>
                  
                     <tr>
-                        <td>GatewaySubnet</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/whatif/providers/microsoft.network/virtualnetworks/vnet0503/subnets/gatewaysubnet">
+                                GatewaySubnet
+                            </a>
+                        </td>
                         <td>10.0.1.0/28</td>
 
                                                     <td>
@@ -447,7 +724,13 @@
                     <td>10.0.0.0/24</td>
         
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -459,7 +742,11 @@
                 <tbody>
                  
                     <tr>
-                        <td>default</td>
+                        <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.network/virtualnetworks/ml-wu2c09083361eabe/subnets/default">
+                                default
+                            </a>
+                        </td>
                         <td>10.0.0.0/24</td>
 
                                                     <td>
@@ -474,11 +761,20 @@
     </tr>
                     </tbody>
                 </table>
-            
+                <hr/>
                 <a id="nic">
                     <h2>Network Interface</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:500px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -493,14 +789,50 @@
                     <tbody>
                             <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Network/networkInterfaces/AzSHCILabNIC1">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.network/networkinterfaces/azshcilabnic1">
                 AzSHCILabNIC1
             </a>
         </td>
         <td>japaneast</td>
         <td>azshci</td>
-        <td>10.0.0.4</td>
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:60px;">
+                    <col style="width:120px;">
+                    <col style="width:110px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>PrivateIpAddress</th>
+                        <th>Version</th>
+                        <th>AllocationMethod</th>
+                        <th>PublicIpAddress</th>                        
+                    </tr>
+                </thead>                
+            
+                                    <tbody>
+                                                <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.network/networkinterfaces/azshcilabnic1/ipconfigurations/ipconfig1">
+                                ipconfig1
+                            </a>
+                        </td>
+                        <td>10.0.0.4</td>
+                        <td>IPv4</td>
+                        <td>Dynamic</td>
 
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.network/publicipaddresses/azshcilabpubip">
+                                AzSHCILabPubIP
+                            </a>
+                        </td>
+
+                    </tbody>
+                            </table>
+        </td>
                     <td>
                 <ul class="list-unstyled">
                                     </ul>
@@ -509,39 +841,56 @@
         <td>False</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Network/networkSecurityGroups/AzSHCILabNSG">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.network/networksecuritygroups/azshcilabnsg">
                     AzSHCILabNSG
                 </a>
             </td>
             </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/networkInterfaces/nic1">
-                nic1
-            </a>
-        </td>
-        <td>japaneast</td>
-        <td>fgnew</td>
-        <td>10.0.2.6</td>
-
-                    <td>
-                <ul class="list-unstyled">
-                                    </ul>
-            </td>
-        
-        <td>False</td>
-
-                    <td>
-            </td>  
-            </tr>    <tr>
-        <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/networkInterfaces/openvpn991">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.network/networkinterfaces/openvpn991">
                 openvpn991
             </a>
         </td>
         <td>japaneast</td>
         <td>openvpn_group</td>
-        <td>10.1.0.6</td>
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:60px;">
+                    <col style="width:120px;">
+                    <col style="width:110px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>PrivateIpAddress</th>
+                        <th>Version</th>
+                        <th>AllocationMethod</th>
+                        <th>PublicIpAddress</th>                        
+                    </tr>
+                </thead>                
+            
+                                    <tbody>
+                                                <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.network/networkinterfaces/openvpn991/ipconfigurations/ipconfig1">
+                                ipconfig1
+                            </a>
+                        </td>
+                        <td>10.1.0.6</td>
+                        <td>IPv4</td>
+                        <td>Dynamic</td>
 
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.network/publicipaddresses/openvpn-ip">
+                                openvpn-ip
+                            </a>
+                        </td>
+
+                    </tbody>
+                            </table>
+        </td>
                     <td>
                 <ul class="list-unstyled">
                                     </ul>
@@ -550,20 +899,56 @@
         <td>True</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/networkSecurityGroups/openvpn-nsg">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.network/networksecuritygroups/openvpn-nsg">
                     openvpn-nsg
                 </a>
             </td>
             </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkInterfaces/explictproxy696">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networkinterfaces/explictproxy696">
                 explictproxy696
             </a>
         </td>
         <td>japaneast</td>
         <td>proxy</td>
-        <td>172.25.2.5</td>
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:60px;">
+                    <col style="width:120px;">
+                    <col style="width:110px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>PrivateIpAddress</th>
+                        <th>Version</th>
+                        <th>AllocationMethod</th>
+                        <th>PublicIpAddress</th>                        
+                    </tr>
+                </thead>                
+            
+                                    <tbody>
+                                                <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networkinterfaces/explictproxy696/ipconfigurations/ipconfig1">
+                                ipconfig1
+                            </a>
+                        </td>
+                        <td>172.25.2.5</td>
+                        <td>IPv4</td>
+                        <td>Static</td>
 
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/publicipaddresses/explictproxy-ip">
+                                explictproxy-ip
+                            </a>
+                        </td>
+
+                    </tbody>
+                            </table>
+        </td>
                     <td>
                 <ul class="list-unstyled">
                                     </ul>
@@ -572,39 +957,111 @@
         <td>False</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkSecurityGroups/explictproxy-nsg">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networksecuritygroups/explictproxy-nsg">
                     explictproxy-nsg
                 </a>
             </td>
             </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkInterfaces/transprocy744">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networkinterfaces/transprocy744">
                 transprocy744
             </a>
         </td>
         <td>japaneast</td>
         <td>proxy</td>
-        <td>172.25.2.4</td>
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:60px;">
+                    <col style="width:120px;">
+                    <col style="width:110px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>PrivateIpAddress</th>
+                        <th>Version</th>
+                        <th>AllocationMethod</th>
+                        <th>PublicIpAddress</th>                        
+                    </tr>
+                </thead>                
+            
+                                    <tbody>
+                                                <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networkinterfaces/transprocy744/ipconfigurations/ipconfig1">
+                                ipconfig1
+                            </a>
+                        </td>
+                        <td>172.25.2.4</td>
+                        <td>IPv4</td>
+                        <td>Static</td>
 
-                    <td>xxx.xxx.xxx.xxx</td>
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/publicipaddresses/transprocy-ip">
+                                transprocy-ip
+                            </a>
+                        </td>
+
+                    </tbody>
+                            </table>
+        </td>
+                    <td>20.46.117.234</td>
         
         <td>True</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkSecurityGroups/transprocy-nsg">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networksecuritygroups/transprocy-nsg">
                     transprocy-nsg
                 </a>
             </td>
             </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/syslog/providers/Microsoft.Network/networkInterfaces/syslog01733">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.network/networkinterfaces/syslog01733">
                 syslog01733
             </a>
         </td>
         <td>japaneast</td>
         <td>syslog</td>
-        <td>10.1.0.4</td>
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:60px;">
+                    <col style="width:120px;">
+                    <col style="width:110px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>PrivateIpAddress</th>
+                        <th>Version</th>
+                        <th>AllocationMethod</th>
+                        <th>PublicIpAddress</th>                        
+                    </tr>
+                </thead>                
+            
+                                    <tbody>
+                                                <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.network/networkinterfaces/syslog01733/ipconfigurations/ipconfig1">
+                                ipconfig1
+                            </a>
+                        </td>
+                        <td>10.1.0.4</td>
+                        <td>IPv4</td>
+                        <td>Dynamic</td>
 
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.network/publicipaddresses/syslog01-ip">
+                                syslog01-ip
+                            </a>
+                        </td>
+
+                    </tbody>
+                            </table>
+        </td>
                     <td>
                 <ul class="list-unstyled">
                                     </ul>
@@ -613,20 +1070,56 @@
         <td>False</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/syslog/providers/Microsoft.Network/networkSecurityGroups/syslog01-nsg">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.network/networksecuritygroups/syslog01-nsg">
                     syslog01-nsg
                 </a>
             </td>
             </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/manakana/providers/Microsoft.Network/networkInterfaces/ml-wu2c09083361eabe">
-                ml-wu2c09083361eabe
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.network/networkinterfaces/unbound01153">
+                unbound01153
             </a>
         </td>
-        <td>westus2</td>
-        <td>manakana</td>
-        <td>10.0.0.4</td>
+        <td>japaneast</td>
+        <td>unbound</td>
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:60px;">
+                    <col style="width:120px;">
+                    <col style="width:110px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>PrivateIpAddress</th>
+                        <th>Version</th>
+                        <th>AllocationMethod</th>
+                        <th>PublicIpAddress</th>                        
+                    </tr>
+                </thead>                
+            
+                                    <tbody>
+                                                <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.network/networkinterfaces/unbound01153/ipconfigurations/ipconfig1">
+                                ipconfig1
+                            </a>
+                        </td>
+                        <td>10.1.1.4</td>
+                        <td>IPv4</td>
+                        <td>Dynamic</td>
 
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.network/publicipaddresses/unbound01-ip">
+                                unbound01-ip
+                            </a>
+                        </td>
+
+                    </tbody>
+                            </table>
+        </td>
                     <td>
                 <ul class="list-unstyled">
                                     </ul>
@@ -635,18 +1128,82 @@
         <td>False</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/manakana/providers/Microsoft.Network/networkSecurityGroups/ml-wu2c09083361eabe">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.network/networksecuritygroups/unbound01-nsg">
+                    unbound01-nsg
+                </a>
+            </td>
+            </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.network/networkinterfaces/ml-wu2c09083361eabe">
+                ml-wu2c09083361eabe
+            </a>
+        </td>
+        <td>westus2</td>
+        <td>manakana</td>
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:60px;">
+                    <col style="width:120px;">
+                    <col style="width:110px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>PrivateIpAddress</th>
+                        <th>Version</th>
+                        <th>AllocationMethod</th>
+                        <th>PublicIpAddress</th>                        
+                    </tr>
+                </thead>                
+            
+                                    <tbody>
+                                                <td>
+                            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.network/networkinterfaces/ml-wu2c09083361eabe/ipconfigurations/ipconfig1">
+                                ipconfig1
+                            </a>
+                        </td>
+                        <td>10.0.0.4</td>
+                        <td>IPv4</td>
+                        <td>Dynamic</td>
+
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.network/publicipaddresses/ml-wu2c09083361eabe">
+                                ml-wu2c09083361eabe
+                            </a>
+                        </td>
+
+                    </tbody>
+                            </table>
+        </td>
+                    <td>
+                <ul class="list-unstyled">
+                                    </ul>
+            </td>
+        
+        <td>False</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.network/networksecuritygroups/ml-wu2c09083361eabe">
                     ml-wu2c09083361eabe
                 </a>
             </td>
             </tr>
                     </tbody>
                 </table>
-            
+                <hr/>
                 <a id="nsg">
                     <h2>Network Security Group</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:850px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -658,14 +1215,24 @@
                     <tbody>
                             <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Network/networkSecurityGroups/AzSHCILabNSG">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.network/networksecuritygroups/azshcilabnsg">
                 AzSHCILabNSG
             </a>
         </td>
         <td>japaneast</td>
         <td>azshci</td>
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:130px;">
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:120px;">
+                    <col style="width:70px;">                    
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Direction</th>
@@ -678,42 +1245,54 @@
                         <th>Access</th>
                     </tr>
                 </thead>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>1000</td>
-                    <td>default-allow-rdp</td>
+                <tbody>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>1000</td>
+                        <td>default-allow-rdp</td>
 
-                                            <td>3389</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>3389</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>
-                        <ul class="list-unstyled">
-                         
-                            <li>xxx.xxx.xxx.xxx</li>
-                         
-                            <li>xxx.xxx.xxx.xxx</li>
-                         
-                            <li>xxx.xxx.xxx.xxx</li>
-                                                </ul>
-                        </td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                            </table>
+                                                    <td>
+                            <ul class="list-unstyled">
+                             
+                                <li>xxx.xxx.xxx.xxx</li>
+                             
+                                <li>xxx.xxx.0.0/16</li>
+                             
+                                <li>xxx.xxx.16.0/24</li>
+                                                        </ul>
+                            </td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                </tbody>
+            </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/networkSecurityGroups/bastion">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/networksecuritygroups/bastion">
                 bastion
             </a>
         </td>
         <td>japaneast</td>
         <td>fgnew</td>
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:130px;">
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:120px;">
+                    <col style="width:70px;">                    
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Direction</th>
@@ -726,145 +1305,157 @@
                         <th>Access</th>
                     </tr>
                 </thead>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>100</td>
-                    <td>100_in</td>
+                <tbody>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>100</td>
+                        <td>100_in</td>
 
-                                            <td>443</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>443</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>*</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>105</td>
-                    <td>105_in</td>
+                                                    <td>*</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>105</td>
+                        <td>105_in</td>
 
-                                            <td>443</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>443</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>AzureLoadBalancer</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>106</td>
-                    <td>Port_8080</td>
+                                                    <td>AzureLoadBalancer</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>106</td>
+                        <td>Port_8080</td>
 
-                                            <td>443</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>443</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>GatewayManager</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>110</td>
-                    <td>110_in</td>
+                                                    <td>GatewayManager</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>110</td>
+                        <td>110_in</td>
 
-                                            <td>*</td>
-                                        
-                    <td>*</td>
+                                                    <td>*</td>
+                                                
+                        <td>*</td>
 
-                                            <td>Internet</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Deny</td>
-                </tbody>
-                                <tbody>
-                    <td>Outbound</td>
-                    <td>100</td>
-                    <td>100</td>
+                                                    <td>Internet</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Deny</td>
+                    </tr>
+                                    <tr>
+                        <td>Outbound</td>
+                        <td>100</td>
+                        <td>100</td>
 
-                                            <td>443</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>443</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>VirtualNetwork</td>
-                    
-                                            <td>GatewayManager</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Outbound</td>
-                    <td>200</td>
-                    <td>200</td>
+                                                    <td>VirtualNetwork</td>
+                        
+                                                    <td>GatewayManager</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Outbound</td>
+                        <td>200</td>
+                        <td>200</td>
 
-                                            <td>443</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>443</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>VirtualNetwork</td>
-                    
-                                            <td>AzureCloud</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Outbound</td>
-                    <td>210</td>
-                    <td>210</td>
+                                                    <td>VirtualNetwork</td>
+                        
+                                                    <td>AzureCloud</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Outbound</td>
+                        <td>210</td>
+                        <td>210</td>
 
-                                            <td>
-                        <ul class="list-unstyled">
-                         
-                            <li>3389</li>
-                         
-                            <li>22</li>
-                                                </ul>
-                        </td>
-                                        
-                    <td>TCP</td>
+                                                    <td>
+                            <ul class="list-unstyled">
+                             
+                                <li>3389</li>
+                             
+                                <li>22</li>
+                                                        </ul>
+                            </td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>VirtualNetwork</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Outbound</td>
-                    <td>400</td>
-                    <td>400</td>
+                                                    <td>VirtualNetwork</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Outbound</td>
+                        <td>400</td>
+                        <td>400</td>
 
-                                            <td>*</td>
-                                        
-                    <td>*</td>
+                                                    <td>*</td>
+                                                
+                        <td>*</td>
 
-                                            <td>VirtualNetwork</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Deny</td>
-                </tbody>
-                            </table>
+                                                    <td>VirtualNetwork</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Deny</td>
+                    </tr>
+                                </tbody>
+            </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/networkSecurityGroups/bastion2">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/networksecuritygroups/bastion2">
                 bastion2
             </a>
         </td>
         <td>japaneast</td>
         <td>fgnew</td>
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:130px;">
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:120px;">
+                    <col style="width:70px;">                    
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Direction</th>
@@ -877,145 +1468,157 @@
                         <th>Access</th>
                     </tr>
                 </thead>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>100</td>
-                    <td>100_in</td>
+                <tbody>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>100</td>
+                        <td>100_in</td>
 
-                                            <td>443</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>443</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>*</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>105</td>
-                    <td>105_in</td>
+                                                    <td>*</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>105</td>
+                        <td>105_in</td>
 
-                                            <td>443</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>443</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>AzureLoadBalancer</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>106</td>
-                    <td>Port_8080</td>
+                                                    <td>AzureLoadBalancer</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>106</td>
+                        <td>Port_8080</td>
 
-                                            <td>443</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>443</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>GatewayManager</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>110</td>
-                    <td>110_in</td>
+                                                    <td>GatewayManager</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>110</td>
+                        <td>110_in</td>
 
-                                            <td>*</td>
-                                        
-                    <td>*</td>
+                                                    <td>*</td>
+                                                
+                        <td>*</td>
 
-                                            <td>*</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Deny</td>
-                </tbody>
-                                <tbody>
-                    <td>Outbound</td>
-                    <td>100</td>
-                    <td>100</td>
+                                                    <td>*</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Deny</td>
+                    </tr>
+                                    <tr>
+                        <td>Outbound</td>
+                        <td>100</td>
+                        <td>100</td>
 
-                                            <td>443</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>443</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>VirtualNetwork</td>
-                    
-                                            <td>GatewayManager</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Outbound</td>
-                    <td>200</td>
-                    <td>200</td>
+                                                    <td>VirtualNetwork</td>
+                        
+                                                    <td>GatewayManager</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Outbound</td>
+                        <td>200</td>
+                        <td>200</td>
 
-                                            <td>443</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>443</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>VirtualNetwork</td>
-                    
-                                            <td>AzureCloud</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Outbound</td>
-                    <td>210</td>
-                    <td>210</td>
+                                                    <td>VirtualNetwork</td>
+                        
+                                                    <td>AzureCloud</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Outbound</td>
+                        <td>210</td>
+                        <td>210</td>
 
-                                            <td>
-                        <ul class="list-unstyled">
-                         
-                            <li>3389</li>
-                         
-                            <li>22</li>
-                                                </ul>
-                        </td>
-                                        
-                    <td>TCP</td>
+                                                    <td>
+                            <ul class="list-unstyled">
+                             
+                                <li>3389</li>
+                             
+                                <li>22</li>
+                                                        </ul>
+                            </td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>VirtualNetwork</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Outbound</td>
-                    <td>400</td>
-                    <td>400</td>
+                                                    <td>VirtualNetwork</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Outbound</td>
+                        <td>400</td>
+                        <td>400</td>
 
-                                            <td>*</td>
-                                        
-                    <td>*</td>
+                                                    <td>*</td>
+                                                
+                        <td>*</td>
 
-                                            <td>*</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Deny</td>
-                </tbody>
-                            </table>
+                                                    <td>*</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Deny</td>
+                    </tr>
+                                </tbody>
+            </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/networkSecurityGroups/fg-hcduddgb4lp24-NSG">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/networksecuritygroups/fg-hcduddgb4lp24-nsg">
                 fg-hcduddgb4lp24-NSG
             </a>
         </td>
         <td>japaneast</td>
         <td>fgnew</td>
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:130px;">
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:120px;">
+                    <col style="width:70px;">                    
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Direction</th>
@@ -1028,48 +1631,60 @@
                         <th>Access</th>
                     </tr>
                 </thead>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>100</td>
-                    <td>AllowAllInbound</td>
+                <tbody>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>100</td>
+                        <td>AllowAllInbound</td>
 
-                                            <td>*</td>
-                                        
-                    <td>*</td>
+                                                    <td>*</td>
+                                                
+                        <td>*</td>
 
-                                            <td>*</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Deny</td>
-                </tbody>
-                                <tbody>
-                    <td>Outbound</td>
-                    <td>105</td>
-                    <td>AllowAllOutbound</td>
+                                                    <td>*</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Deny</td>
+                    </tr>
+                                    <tr>
+                        <td>Outbound</td>
+                        <td>105</td>
+                        <td>AllowAllOutbound</td>
 
-                                            <td>*</td>
-                                        
-                    <td>*</td>
+                                                    <td>*</td>
+                                                
+                        <td>*</td>
 
-                                            <td>*</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Deny</td>
-                </tbody>
-                            </table>
+                                                    <td>*</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Deny</td>
+                    </tr>
+                                </tbody>
+            </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/networkSecurityGroups/openvpn-nsg">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.network/networksecuritygroups/openvpn-nsg">
                 openvpn-nsg
             </a>
         </td>
         <td>japaneast</td>
         <td>openvpn_group</td>
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:130px;">
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:120px;">
+                    <col style="width:70px;">                    
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Direction</th>
@@ -1082,72 +1697,84 @@
                         <th>Access</th>
                     </tr>
                 </thead>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>1000</td>
-                    <td>default-allow-ssh</td>
+                <tbody>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>1000</td>
+                        <td>default-allow-ssh</td>
 
-                                            <td>22</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>22</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>*</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>1010</td>
-                    <td>Port_8080</td>
+                                                    <td>*</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>1010</td>
+                        <td>Port_8080</td>
 
-                                            <td>443</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>443</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>
-                        <ul class="list-unstyled">
-                         
-                            <li>xxx.xxx.xxx.xxx</li>
-                         
-                            <li>xxx.xxx.xxx.xxx</li>
-                         
-                            <li>xxx.xxx.xxx.xxx</li>
-                                                </ul>
-                        </td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Outbound</td>
-                    <td>100</td>
-                    <td>out_vpn</td>
+                                                    <td>
+                            <ul class="list-unstyled">
+                             
+                                <li>xxx.xxx.16.41</li>
+                             
+                                <li>xxx.xxx.xxx.209</li>
+                             
+                                <li>xxx.xxx.xxx.225</li>
+                                                        </ul>
+                            </td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Outbound</td>
+                        <td>100</td>
+                        <td>out_vpn</td>
 
-                                            <td>*</td>
-                                        
-                    <td>*</td>
+                                                    <td>*</td>
+                                                
+                        <td>*</td>
 
-                                            <td>10.8.0.0/16</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                            </table>
+                                                    <td>10.8.0.0/16</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                </tbody>
+            </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkSecurityGroups/explictproxy-nsg">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networksecuritygroups/explictproxy-nsg">
                 explictproxy-nsg
             </a>
         </td>
         <td>japaneast</td>
         <td>proxy</td>
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:130px;">
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:120px;">
+                    <col style="width:70px;">                    
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Direction</th>
@@ -1160,33 +1787,45 @@
                         <th>Access</th>
                     </tr>
                 </thead>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>300</td>
-                    <td>SSH</td>
+                <tbody>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>300</td>
+                        <td>SSH</td>
 
-                                            <td>22</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>22</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>*</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                            </table>
+                                                    <td>*</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                </tbody>
+            </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkSecurityGroups/transprocy-nsg">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networksecuritygroups/transprocy-nsg">
                 transprocy-nsg
             </a>
         </td>
         <td>japaneast</td>
         <td>proxy</td>
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:130px;">
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:120px;">
+                    <col style="width:70px;">                    
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Direction</th>
@@ -1199,72 +1838,84 @@
                         <th>Access</th>
                     </tr>
                 </thead>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>300</td>
-                    <td>SSH</td>
+                <tbody>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>300</td>
+                        <td>SSH</td>
 
-                                            <td>22</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>22</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>*</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>310</td>
-                    <td>proxy</td>
+                                                    <td>*</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>310</td>
+                        <td>proxy</td>
 
-                                            <td>
-                        <ul class="list-unstyled">
-                         
-                            <li>80</li>
-                         
-                            <li>443</li>
-                         
-                            <li>3128</li>
-                                                </ul>
-                        </td>
-                                        
-                    <td>TCP</td>
+                                                    <td>
+                            <ul class="list-unstyled">
+                             
+                                <li>80</li>
+                             
+                                <li>443</li>
+                             
+                                <li>3128</li>
+                                                        </ul>
+                            </td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>xxx.xxx.xxx.xxx/24</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>320</td>
-                    <td>ForGre</td>
+                                                    <td>xxx.xxx.16.0/24</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>320</td>
+                        <td>ForGre</td>
 
-                                            <td>*</td>
-                                        
-                    <td>*</td>
+                                                    <td>*</td>
+                                                
+                        <td>*</td>
 
-                                            <td>xxx.xxx.xxx.xxx/24</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                            </table>
+                                                    <td>xxx.xxx.16.0/24</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                </tbody>
+            </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/syslog/providers/Microsoft.Network/networkSecurityGroups/syslog01-nsg">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.network/networksecuritygroups/syslog01-nsg">
                 syslog01-nsg
             </a>
         </td>
         <td>japaneast</td>
         <td>syslog</td>
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:130px;">
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:120px;">
+                    <col style="width:70px;">                    
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Direction</th>
@@ -1277,73 +1928,181 @@
                         <th>Access</th>
                     </tr>
                 </thead>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>1000</td>
-                    <td>default-allow-ssh</td>
+                <tbody>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>1000</td>
+                        <td>default-allow-ssh</td>
 
-                                            <td>22</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>22</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>
-                        <ul class="list-unstyled">
-                         
-                            <li>xxx.xxx.xxx.xxx</li>
-                         
-                            <li>10.8.0.0/16</li>
-                         
-                            <li>xxx.xxx.xxx.xxx</li>
+                                                    <td>
+                            <ul class="list-unstyled">
+                             
+                                <li>xxx.xxx.xxx.xxx</li>
+                             
+                                <li>10.8.0.0/16</li>
+                             
+                                <li>xxx.xxx.16.0/24</li>
+                                                        </ul>
+                            </td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>1010</td>
+                        <td>in_syslog</td>
 
-                                                </ul>
-                        </td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>1010</td>
-                    <td>in_syslog</td>
+                                                    <td>514</td>
+                                                
+                        <td>UDP</td>
 
-                                            <td>514</td>
-                                        
-                    <td>UDP</td>
+                                                    <td>xxx.xxx.xxx.xxx</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>1020</td>
+                        <td>forGre</td>
 
-                                            <td>xxx.xxx.xxx.xxx</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>1020</td>
-                    <td>forGre</td>
+                                                    <td>*</td>
+                                                
+                        <td>*</td>
 
-                                            <td>*</td>
-                                        
-                    <td>*</td>
-
-                                            <td>xxx.xxx.xxx.xxx</td>
-                    
-                                            <td>VirtualNetwork</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                            </table>
+                                                    <td>xxx.xxx.19.124</td>
+                        
+                                                    <td>VirtualNetwork</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                </tbody>
+            </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/manakana/providers/Microsoft.Network/networkSecurityGroups/ml-wu2c09083361eabe">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.network/networksecuritygroups/unbound01-nsg">
+                unbound01-nsg
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>unbound</td>
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:130px;">
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:120px;">
+                    <col style="width:70px;">                    
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Priority</th>
+                        <th>Name</th>
+                        <th>Port</th>
+                        <th>Protocol</th>
+                        <th>Source</th>
+                        <th>Destination</th>
+                        <th>Access</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>1000</td>
+                        <td>default-allow-ssh</td>
+
+                                                    <td>22</td>
+                                                
+                        <td>TCP</td>
+
+                                                    <td>
+                            <ul class="list-unstyled">
+                             
+                                <li>xxx.xxx.16.41</li>
+                             
+                                <li>xxx.xxx.xxx.xxx</li>
+                                                        </ul>
+                            </td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>1010</td>
+                        <td>Port_8080</td>
+
+                                                    <td>53</td>
+                                                
+                        <td>*</td>
+
+                                                    <td>
+                            <ul class="list-unstyled">
+                             
+                                <li>xxx.xxx.16.0/24</li>
+                             
+                                <li>xxx.xxx.19.124</li>
+                             
+                                <li>20.46.181.95</li>
+                                                        </ul>
+                            </td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>1020</td>
+                        <td>icmp</td>
+
+                                                    <td>*</td>
+                                                
+                        <td>ICMP</td>
+
+                                                    <td>*</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.network/networksecuritygroups/ml-wu2c09083361eabe">
                 ml-wu2c09083361eabe
             </a>
         </td>
         <td>westus2</td>
         <td>manakana</td>
         <td>
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:130px;">
+                    <col style="width:70px;">
+                    <col style="width:70px;">
+                    <col style="width:120px;">
+                    <col style="width:120px;">
+                    <col style="width:70px;">                    
+                </colgroup>
                 <thead class="thead-dark">
                     <tr>
                         <th>Direction</th>
@@ -1356,46 +2115,54 @@
                         <th>Access</th>
                     </tr>
                 </thead>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>1030</td>
-                    <td>default-allow-ssh</td>
+                <tbody>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>1030</td>
+                        <td>default-allow-ssh</td>
 
-                                            <td>22</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>22</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>*</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                                <tbody>
-                    <td>Inbound</td>
-                    <td>4096</td>
-                    <td>default-proxy-allow</td>
+                                                    <td>*</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                    <tr>
+                        <td>Inbound</td>
+                        <td>4096</td>
+                        <td>default-proxy-allow</td>
 
-                                            <td>44224</td>
-                                        
-                    <td>TCP</td>
+                                                    <td>44224</td>
+                                                
+                        <td>TCP</td>
 
-                                            <td>AzureMachineLearning</td>
-                    
-                                            <td>*</td>
-                    
-                    <td>Allow</td>
-                </tbody>
-                            </table>
+                                                    <td>AzureMachineLearning</td>
+                        
+                                                    <td>*</td>
+                        
+                        <td>Allow</td>
+                    </tr>
+                                </tbody>
+            </table>
         </td>
     </tr>
                     </tbody>
                 </table>
-
+                <hr/>
                 <a id="routeTable">
                     <h2>Route table</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:850px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -1407,7 +2174,7 @@
                     <tbody>
                             <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/routeTables/azfw">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/routetables/azfw">
                 azfw
             </a>
         </td>
@@ -1415,7 +2182,12 @@
         <td>fgnew</td>
         
         <td>
-                        <table class="table table-sm table-bordered">
+                        <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -1424,17 +2196,20 @@
                         <th>NextHopIpAddress</th>
                     </tr>
                 </thead>
-                                    <tbody>
-                        <td>internet</td>
-                        <td>0.0.0.0/0</td>
-                        <td>VirtualAppliance</td>
-                        <td>10.0.0.4</td>
-                    </tbody>
-                                        </table>
+                <tbody>
+                                            <tr>
+                            <td>internet</td>
+                            <td>0.0.0.0/0</td>
+                            <td>VirtualAppliance</td>
+                            <td>10.0.0.4</td>
+                        </tr>
+                                    </tbody>
+
+                        </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/routeTables/FGTDefaultAPRouteTable">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/routetables/fgtdefaultaproutetable">
                 FGTDefaultAPRouteTable
             </a>
         </td>
@@ -1442,7 +2217,12 @@
         <td>fgnew</td>
         
         <td>
-                        <table class="table table-sm table-bordered">
+                        <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -1451,23 +2231,26 @@
                         <th>NextHopIpAddress</th>
                     </tr>
                 </thead>
-                                    <tbody>
-                        <td>toDefault</td>
-                        <td>0.0.0.0/0</td>
-                        <td>VirtualAppliance</td>
-                        <td>10.0.0.4</td>
-                    </tbody>
-                                    <tbody>
-                        <td>home</td>
-                        <td>xxx.xxx.xxx.xxx/32</td>
-                        <td>Internet</td>
-                        <td></td>
-                    </tbody>
-                                        </table>
+                <tbody>
+                                            <tr>
+                            <td>toDefault</td>
+                            <td>0.0.0.0/0</td>
+                            <td>VirtualAppliance</td>
+                            <td>10.0.0.4</td>
+                        </tr>
+                                            <tr>
+                            <td>home</td>
+                            <td>xxx.xxx.xxx.78/32</td>
+                            <td>Internet</td>
+                            <td></td>
+                        </tr>
+                                    </tbody>
+
+                        </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/fgnew/providers/Microsoft.Network/routeTables/protect2">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/routetables/protect2">
                 protect2
             </a>
         </td>
@@ -1475,7 +2258,12 @@
         <td>fgnew</td>
         
         <td>
-                        <table class="table table-sm table-bordered">
+                        <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -1484,23 +2272,26 @@
                         <th>NextHopIpAddress</th>
                     </tr>
                 </thead>
-                                    <tbody>
-                        <td>ToOnpre</td>
-                        <td>0.0.0.0/0</td>
-                        <td>VirtualAppliance</td>
-                        <td>10.0.1.4</td>
-                    </tbody>
-                                    <tbody>
-                        <td>overlap</td>
-                        <td>192.168.210.0/30</td>
-                        <td>None</td>
-                        <td></td>
-                    </tbody>
-                                        </table>
+                <tbody>
+                                            <tr>
+                            <td>ToOnpre</td>
+                            <td>0.0.0.0/0</td>
+                            <td>VirtualAppliance</td>
+                            <td>10.0.1.4</td>
+                        </tr>
+                                            <tr>
+                            <td>overlap</td>
+                            <td>192.168.210.0/30</td>
+                            <td>None</td>
+                            <td></td>
+                        </tr>
+                                    </tbody>
+
+                        </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/routeTables/vpn">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.network/routetables/vpn">
                 vpn
             </a>
         </td>
@@ -1508,7 +2299,12 @@
         <td>openvpn_group</td>
         
         <td>
-                        <table class="table table-sm table-bordered">
+                        <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
                 <thead class="thead-dark">
                     <tr>
                         <th>Name</th>
@@ -1517,17 +2313,20 @@
                         <th>NextHopIpAddress</th>
                     </tr>
                 </thead>
-                                    <tbody>
-                        <td>vpn</td>
-                        <td>10.8.0.0/16</td>
-                        <td>VirtualAppliance</td>
-                        <td>10.1.0.6</td>
-                    </tbody>
-                                        </table>
+                <tbody>
+                                            <tr>
+                            <td>vpn</td>
+                            <td>10.8.0.0/16</td>
+                            <td>VirtualAppliance</td>
+                            <td>10.1.0.6</td>
+                        </tr>
+                                    </tbody>
+
+                        </table>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/routeTables/proxy">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/routetables/proxy">
                 proxy
             </a>
         </td>
@@ -1540,18 +2339,320 @@
     </tr>
                     </tbody>
                 </table>
+                <hr/>
+                <a id="pip">
+                    <h2>Public IP Address</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:70px;">
+                        <col style="width:70px;">
+                        <col style="width:110px;">
+                        <col style="width:100px;">
+                        <col style="width:110px;">
+                        <col style="width:500px;">
+                    </colgroup>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>Sku</th>
+                            <th>Version</th>
+                            <th>Allocation</th>
+                            <th>IpAddress</th>
+                            <th>IpConfiguration</th>
+                            <th>DnsSettings</th>                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.network/publicipaddresses/azshcilabpubip">
+                AzSHCILabPubIP
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>azshci</td>
+        <td>Basic</td>
+        <td>IPv4</td>
+        <td>Static</td>
+        <td>20.43.86.239</td>
 
+        <td>
+                                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.network/networkinterfaces/azshcilabnic1/ipconfigurations/ipconfig1">
+                    ipconfig1
+                </a>
+                    </td>                
+
+        <td>
+                        <table>
+                <tbody>
+                    <tr>
+                        <th>DomainNameLabel</th>
+                        <td>azshcihost00147oygy</td>
+                    </tr>
+                    <tr>
+                        <th>Fqdn</th>
+                        <td>azshcihost00147oygy.japaneast.cloudapp.azure.com</td>
+                    </tr>
+                </tbody>
+            </table>
+                    </td>
+
+        
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/publicipaddresses/10.0.1.100">
+                10.0.1.100
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        <td>Standard</td>
+        <td>IPv4</td>
+        <td>Static</td>
+        <td>20.43.89.222</td>
+
+        <td>
+                    </td>                
+
+        <td>
+                    </td>
+
+        
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/publicipaddresses/azurefirewalls-ip">
+                azureFirewalls-ip
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        <td>Standard</td>
+        <td>IPv4</td>
+        <td>Static</td>
+        <td>20.43.90.80</td>
+
+        <td>
+                    </td>                
+
+        <td>
+                    </td>
+
+        
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.network/publicipaddresses/std">
+                std
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        <td>Standard</td>
+        <td>IPv4</td>
+        <td>Static</td>
+        <td>52.185.185.67</td>
+
+        <td>
+                    </td>                
+
+        <td>
+                    </td>
+
+        
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.network/publicipaddresses/openvpn-ip">
+                openvpn-ip
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>openvpn_group</td>
+        <td>Basic</td>
+        <td>IPv4</td>
+        <td>Static</td>
+        <td>20.46.183.161</td>
+
+        <td>
+                                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.network/networkinterfaces/openvpn991/ipconfigurations/ipconfig1">
+                    ipconfig1
+                </a>
+                    </td>                
+
+        <td>
+                    </td>
+
+        
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/publicipaddresses/azsgw">
+                azsgw
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>proxy</td>
+        <td>Basic</td>
+        <td>IPv4</td>
+        <td>Dynamic</td>
+        <td>Not Assigned</td>
+
+        <td>
+                    </td>                
+
+        <td>
+                    </td>
+
+        
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/publicipaddresses/explictproxy-ip">
+                explictproxy-ip
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>proxy</td>
+        <td>Basic</td>
+        <td>IPv4</td>
+        <td>Dynamic</td>
+        <td>Not Assigned</td>
+
+        <td>
+                                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networkinterfaces/explictproxy696/ipconfigurations/ipconfig1">
+                    ipconfig1
+                </a>
+                    </td>                
+
+        <td>
+                    </td>
+
+        
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/publicipaddresses/transprocy-ip">
+                transprocy-ip
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>proxy</td>
+        <td>Basic</td>
+        <td>IPv4</td>
+        <td>Dynamic</td>
+        <td>20.46.181.95</td>
+
+        <td>
+                                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networkinterfaces/transprocy744/ipconfigurations/ipconfig1">
+                    ipconfig1
+                </a>
+                    </td>                
+
+        <td>
+                    </td>
+
+        
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.network/publicipaddresses/syslog01-ip">
+                syslog01-ip
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>syslog</td>
+        <td>Standard</td>
+        <td>IPv4</td>
+        <td>Static</td>
+        <td>20.194.192.16</td>
+
+        <td>
+                                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.network/networkinterfaces/syslog01733/ipconfigurations/ipconfig1">
+                    ipconfig1
+                </a>
+                    </td>                
+
+        <td>
+                    </td>
+
+        
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.network/publicipaddresses/unbound01-ip">
+                unbound01-ip
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>unbound</td>
+        <td>Basic</td>
+        <td>IPv4</td>
+        <td>Static</td>
+        <td>20.46.117.234</td>
+
+        <td>
+                                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.network/networkinterfaces/unbound01153/ipconfigurations/ipconfig1">
+                    ipconfig1
+                </a>
+                    </td>                
+
+        <td>
+                    </td>
+
+        
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.network/publicipaddresses/ml-wu2c09083361eabe">
+                ml-wu2c09083361eabe
+            </a>
+        </td>
+        <td>westus2</td>
+        <td>manakana</td>
+        <td>Basic</td>
+        <td>IPv4</td>
+        <td>Dynamic</td>
+        <td>Not Assigned</td>
+
+        <td>
+                                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.network/networkinterfaces/ml-wu2c09083361eabe/ipconfigurations/ipconfig1">
+                    ipconfig1
+                </a>
+                    </td>                
+
+        <td>
+                    </td>
+
+        
+    </tr>
+                    </tbody>
+                </table>
+                <hr/>
                 <a id="vm">
                     <h2>Virtual Machine</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:50px;">
+                        <col style="width:90px;">
+                        <col style="width:260px;">
+                        <col style="width:500px;">
+                        <col style="width:280px;">
+                        <col style="width:150px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
                             <th>Location</th>
                             <th>ResourceGroupName</th>
                             <th>Size</th>
+                            <th>AvailabilitySet</th>
+                            <th>Zones</th>
                             <th>OsType</th>
+                            <th>ImageReference</th>
                             <th>OsDisk</th>
                             <th>DataDisk</th>
                             <th>NetworkInterface</th>
@@ -1560,21 +2661,132 @@
                     <tbody>
                             <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/AZSHCI/providers/Microsoft.Compute/virtualMachines/AzSHCIHost001">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.compute/virtualmachines/avstest">
+                avstest
+            </a>
+        </td>
+        <td>westus</td>
+        <td>VWANJE</td>
+        <td>Standard_DS1_v2</td>
+
+        <td>
+                                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.compute/availabilitysets/avs">
+                    AVS
+                </a>
+                    </td>
+
+        <td>
+                    </td>
+
+        <td>Linux</td>
+        <td>
+                        <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
+                <tbody>
+                    <tr>
+                        <th>Publisher</th>
+                        <td>Canonical</td>
+                    </tr>
+                    <tr>
+                        <th>Offer</th>
+                        <td>UbuntuServer</td>
+                    </tr>
+                    <tr>
+                        <th>Sku</th>
+                        <td>18.04-LTS</td>
+                    </tr>
+                    <tr>
+                        <th>ExactVersion</th>
+                        <td>18.04.202008180</td>
+                    </tr>
+                </tbody>
+            </table>
+                    </td>
+
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
+                <tbody>
+                    <tr>
+                        <th>ManagedDisk</th>
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.compute/disks/avstest_osdisk_1_e3064ee31e284b549f614d42511816c0">
+                                avstest_OsDisk_1_e3064ee31e284b549f614d42511816c0
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Caching</th>
+                        <td>ReadWrite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+
+        <td>
+                    </td>
+
+        <td>
+            <ul class="list-unstyled">
+             
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.network/networkinterfaces/avstest967">
+                        <li>avstest967</li>
+                    </a>
+                        </ul>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.compute/virtualmachines/azshcihost001">
                 AzSHCIHost001
             </a>
         </td>
         <td>japaneast</td>
         <td>AZSHCI</td>
         <td>Standard_D16s_v3</td>
+
+        <td>
+                    </td>
+
+        <td>
+                    </td>
+
         <td>Windows</td>
         <td>
-            <table>
+                        <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
+                <tbody>
+                    <tr>
+                        <th>Publisher</th>
+                        <td>MicrosoftWindowsServer</td>
+                    </tr>
+                    <tr>
+                        <th>Offer</th>
+                        <td>WindowsServer</td>
+                    </tr>
+                    <tr>
+                        <th>Sku</th>
+                        <td>2019-Datacenter</td>
+                    </tr>
+                    <tr>
+                        <th>ExactVersion</th>
+                        <td>17763.1339.2007101755</td>
+                    </tr>
+                </tbody>
+            </table>
+                    </td>
+
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
                 <tbody>
                     <tr>
                         <th>ManagedDisk</th>
                                                 <td>
-                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/AZSHCI/providers/Microsoft.Compute/disks/AzSHCIHost001_OsDisk_1_4c25b38d06b0404283c92f0c6306e7ac">
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.compute/disks/azshcihost001_osdisk_1_4c25b38d06b0404283c92f0c6306e7ac">
                                 AzSHCIHost001_OsDisk_1_4c25b38d06b0404283c92f0c6306e7ac
                             </a>
                         </td>
@@ -1593,28 +2805,62 @@
         <td>
             <ul class="list-unstyled">
              
-                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Network/networkInterfaces/AzSHCILabNIC1">
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.network/networkinterfaces/azshcilabnic1">
                         <li>AzSHCILabNIC1</li>
                     </a>
                         </ul>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/virtualMachines/openvpn">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.compute/virtualmachines/openvpn">
                 openvpn
             </a>
         </td>
         <td>japaneast</td>
         <td>OPENVPN_GROUP</td>
         <td>Standard_DS1_v2</td>
+
+        <td>
+                    </td>
+
+        <td>
+                    </td>
+
         <td>Linux</td>
         <td>
-            <table>
+                        <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
+                <tbody>
+                    <tr>
+                        <th>Publisher</th>
+                        <td>RedHat</td>
+                    </tr>
+                    <tr>
+                        <th>Offer</th>
+                        <td>RHEL</td>
+                    </tr>
+                    <tr>
+                        <th>Sku</th>
+                        <td>7.3</td>
+                    </tr>
+                    <tr>
+                        <th>ExactVersion</th>
+                        <td>7.3.2017090800</td>
+                    </tr>
+                </tbody>
+            </table>
+                    </td>
+
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
                 <tbody>
                     <tr>
                         <th>ManagedDisk</th>
                                                 <td>
-                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/openvpn_OsDisk_1_33549c8506024c0bb491daeb65c94359">
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.compute/disks/openvpn_osdisk_1_33549c8506024c0bb491daeb65c94359">
                                 openvpn_OsDisk_1_33549c8506024c0bb491daeb65c94359
                             </a>
                         </td>
@@ -1629,7 +2875,10 @@
 
         <td>
             
-            <table class="table table-sm table-bordered">
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:40px;">
+                <col style="width:150px;">
+                <col style="width:70px;">
                 <thead class="thead-dark">
                     <tr>
                         <th>Lun</th>
@@ -1640,7 +2889,7 @@
                                 <tbody>
                     <td>0</td>
                                             <td>
-                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/aaa">
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.compute/disks/aaa">
                                 aaa
                             </a>
                         </td>
@@ -1649,7 +2898,7 @@
                                 <tbody>
                     <td>1</td>
                                             <td>
-                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/bbbb">
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.compute/disks/bbbb">
                                 bbbb
                             </a>
                         </td>
@@ -1661,28 +2910,62 @@
         <td>
             <ul class="list-unstyled">
              
-                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Network/networkInterfaces/openvpn991">
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.network/networkinterfaces/openvpn991">
                         <li>openvpn991</li>
                     </a>
                         </ul>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/virtualMachines/explictproxy">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.compute/virtualmachines/explictproxy">
                 explictproxy
             </a>
         </td>
         <td>japaneast</td>
         <td>PROXY</td>
         <td>Standard_DS1_v2</td>
+
+        <td>
+                    </td>
+
+        <td>
+                    </td>
+
         <td>Linux</td>
         <td>
-            <table>
+                        <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
+                <tbody>
+                    <tr>
+                        <th>Publisher</th>
+                        <td>OpenLogic</td>
+                    </tr>
+                    <tr>
+                        <th>Offer</th>
+                        <td>CentOS</td>
+                    </tr>
+                    <tr>
+                        <th>Sku</th>
+                        <td>8_2</td>
+                    </tr>
+                    <tr>
+                        <th>ExactVersion</th>
+                        <td>8.2.2020062400</td>
+                    </tr>
+                </tbody>
+            </table>
+                    </td>
+
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
                 <tbody>
                     <tr>
                         <th>ManagedDisk</th>
                                                 <td>
-                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/disks/explictproxy_OsDisk_1_eb87f5d036d741da92b40e330d07944c">
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.compute/disks/explictproxy_osdisk_1_eb87f5d036d741da92b40e330d07944c">
                                 explictproxy_OsDisk_1_eb87f5d036d741da92b40e330d07944c
                             </a>
                         </td>
@@ -1701,28 +2984,62 @@
         <td>
             <ul class="list-unstyled">
              
-                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkInterfaces/explictproxy696">
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networkinterfaces/explictproxy696">
                         <li>explictproxy696</li>
                     </a>
                         </ul>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/virtualMachines/transprocy">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.compute/virtualmachines/transprocy">
                 transprocy
             </a>
         </td>
         <td>japaneast</td>
         <td>PROXY</td>
         <td>Standard_DS1_v2</td>
+
+        <td>
+                    </td>
+
+        <td>
+                    </td>
+
         <td>Linux</td>
         <td>
-            <table>
+                        <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
+                <tbody>
+                    <tr>
+                        <th>Publisher</th>
+                        <td>OpenLogic</td>
+                    </tr>
+                    <tr>
+                        <th>Offer</th>
+                        <td>CentOS</td>
+                    </tr>
+                    <tr>
+                        <th>Sku</th>
+                        <td>8_2</td>
+                    </tr>
+                    <tr>
+                        <th>ExactVersion</th>
+                        <td>8.2.2020062400</td>
+                    </tr>
+                </tbody>
+            </table>
+                    </td>
+
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
                 <tbody>
                     <tr>
                         <th>ManagedDisk</th>
                                                 <td>
-                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/disks/transprocy_OsDisk_1_4d8fae2c6c5e4ec0b6637d3bd245c8a8">
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.compute/disks/transprocy_osdisk_1_4d8fae2c6c5e4ec0b6637d3bd245c8a8">
                                 transprocy_OsDisk_1_4d8fae2c6c5e4ec0b6637d3bd245c8a8
                             </a>
                         </td>
@@ -1741,28 +3058,63 @@
         <td>
             <ul class="list-unstyled">
              
-                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Network/networkInterfaces/transprocy744">
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.network/networkinterfaces/transprocy744">
                         <li>transprocy744</li>
                     </a>
                         </ul>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/SYSLOG/providers/Microsoft.Compute/virtualMachines/syslog01">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.compute/virtualmachines/syslog01">
                 syslog01
             </a>
         </td>
         <td>japaneast</td>
         <td>SYSLOG</td>
         <td>Standard_B1ms</td>
+
+        <td>
+                    </td>
+
+        <td>
+                            1
+                    </td>
+
         <td>Linux</td>
         <td>
-            <table>
+                        <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
+                <tbody>
+                    <tr>
+                        <th>Publisher</th>
+                        <td>Canonical</td>
+                    </tr>
+                    <tr>
+                        <th>Offer</th>
+                        <td>UbuntuServer</td>
+                    </tr>
+                    <tr>
+                        <th>Sku</th>
+                        <td>18.04-LTS</td>
+                    </tr>
+                    <tr>
+                        <th>ExactVersion</th>
+                        <td>18.04.202007290</td>
+                    </tr>
+                </tbody>
+            </table>
+                    </td>
+
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
                 <tbody>
                     <tr>
                         <th>ManagedDisk</th>
                                                 <td>
-                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/SYSLOG/providers/Microsoft.Compute/disks/syslog01_OsDisk_1_167589ea44f44d39824423733d2ba8a6">
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.compute/disks/syslog01_osdisk_1_167589ea44f44d39824423733d2ba8a6">
                                 syslog01_OsDisk_1_167589ea44f44d39824423733d2ba8a6
                             </a>
                         </td>
@@ -1781,28 +3133,136 @@
         <td>
             <ul class="list-unstyled">
              
-                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/syslog/providers/Microsoft.Network/networkInterfaces/syslog01733">
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.network/networkinterfaces/syslog01733">
                         <li>syslog01733</li>
                     </a>
                         </ul>
         </td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/MANAKANA/providers/Microsoft.Compute/virtualMachines/ml-wu2c09083361eabe">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.compute/virtualmachines/unbound01">
+                unbound01
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>UNBOUND</td>
+        <td>Standard_B2s</td>
+
+        <td>
+                    </td>
+
+        <td>
+                    </td>
+
+        <td>Linux</td>
+        <td>
+                        <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
+                <tbody>
+                    <tr>
+                        <th>Publisher</th>
+                        <td>Canonical</td>
+                    </tr>
+                    <tr>
+                        <th>Offer</th>
+                        <td>UbuntuServer</td>
+                    </tr>
+                    <tr>
+                        <th>Sku</th>
+                        <td>18.04-LTS</td>
+                    </tr>
+                    <tr>
+                        <th>ExactVersion</th>
+                        <td>18.04.202008180</td>
+                    </tr>
+                </tbody>
+            </table>
+                    </td>
+
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
+                <tbody>
+                    <tr>
+                        <th>ManagedDisk</th>
+                                                <td>
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.compute/disks/unbound01_osdisk_1_aff19f5451424fb19f960219a47ac04b">
+                                unbound01_OsDisk_1_aff19f5451424fb19f960219a47ac04b
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Caching</th>
+                        <td>ReadWrite</td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+
+        <td>
+                    </td>
+
+        <td>
+            <ul class="list-unstyled">
+             
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.network/networkinterfaces/unbound01153">
+                        <li>unbound01153</li>
+                    </a>
+                        </ul>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.compute/virtualmachines/ml-wu2c09083361eabe">
                 ml-wu2c09083361eabe
             </a>
         </td>
         <td>westus2</td>
         <td>MANAKANA</td>
         <td>STANDARD_DS3_V2</td>
+
+        <td>
+                    </td>
+
+        <td>
+                    </td>
+
         <td>Linux</td>
         <td>
-            <table>
+                        <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
+                <tbody>
+                    <tr>
+                        <th>Publisher</th>
+                        <td>microsoft-dsvm</td>
+                    </tr>
+                    <tr>
+                        <th>Offer</th>
+                        <td>aml-workstation</td>
+                    </tr>
+                    <tr>
+                        <th>Sku</th>
+                        <td>ubuntu</td>
+                    </tr>
+                    <tr>
+                        <th>ExactVersion</th>
+                        <td>20.01.08</td>
+                    </tr>
+                </tbody>
+            </table>
+                    </td>
+
+        <td>
+            <table class="table table-sm table-bordered" style="table-layout: fixed;">
+                <col style="width:90px;">
+                <col style="width:150px;">
                 <tbody>
                     <tr>
                         <th>ManagedDisk</th>
                                                 <td>
-                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/MANAKANA/providers/Microsoft.Compute/disks/ml-wu2c09083361eabe_osDisk">
+                            <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.compute/disks/ml-wu2c09083361eabe_osdisk">
                                 ml-wu2c09083361eabe_osDisk
                             </a>
                         </td>
@@ -1821,7 +3281,7 @@
         <td>
             <ul class="list-unstyled">
              
-                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/manakana/providers/Microsoft.Network/networkInterfaces/ml-wu2c09083361eabe">
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.network/networkinterfaces/ml-wu2c09083361eabe">
                         <li>ml-wu2c09083361eabe</li>
                     </a>
                         </ul>
@@ -1829,11 +3289,20 @@
     </tr>
                     </tbody>
                 </table>
-
+                <hr/>
                 <a id="disk">
                     <h2>Disk</h2>
                 </a>
-                <table class="table table-sm table-bordered table-hover">
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:550px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:125px;">
+                        <col style="width:150px;">                        
+                        <col style="width:90px;">
+                        <col style="width:90px;">
+                    </colgroup>
                     <thead class="thead-dark">
                         <tr>
                             <th>Name</th>
@@ -1848,7 +3317,25 @@
                     <tbody>
                             <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/MANAKANA/providers/Microsoft.Compute/disks/ml-wu2c09083361eabe_osDisk">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.compute/disks/avstest_osdisk_1_e3064ee31e284b549f614d42511816c0">
+                avstest_OsDisk_1_e3064ee31e284b549f614d42511816c0
+            </a>
+        </td>
+        <td>westus</td>
+        <td>VWANJE</td>
+        <td>StandardSSD_LRS</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.compute/virtualmachines/avstest">
+                    avstest
+                </a>
+            </td>
+        
+        <td>30</td>
+        <td>Attached</td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.compute/disks/ml-wu2c09083361eabe_osdisk">
                 ml-wu2c09083361eabe_osDisk
             </a>
         </td>
@@ -1857,7 +3344,7 @@
         <td>Standard_LRS</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/manakana/providers/Microsoft.Compute/virtualMachines/ml-wu2c09083361eabe">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.compute/virtualmachines/ml-wu2c09083361eabe">
                     ml-wu2c09083361eabe
                 </a>
             </td>
@@ -1866,7 +3353,7 @@
         <td>Reserved</td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/AZSHCI/providers/Microsoft.Compute/disks/AzSHCIHost001_OsDisk_1_4c25b38d06b0404283c92f0c6306e7ac">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.compute/disks/azshcihost001_osdisk_1_4c25b38d06b0404283c92f0c6306e7ac">
                 AzSHCIHost001_OsDisk_1_4c25b38d06b0404283c92f0c6306e7ac
             </a>
         </td>
@@ -1875,7 +3362,7 @@
         <td>StandardSSD_LRS</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/azshci/providers/Microsoft.Compute/virtualMachines/AzSHCIHost001">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.compute/virtualmachines/azshcihost001">
                     AzSHCIHost001
                 </a>
             </td>
@@ -1884,7 +3371,7 @@
         <td>Reserved</td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/aaa">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.compute/disks/aaa">
                 aaa
             </a>
         </td>
@@ -1893,7 +3380,7 @@
         <td>StandardSSD_LRS</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Compute/virtualMachines/openvpn">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.compute/virtualmachines/openvpn">
                     openvpn
                 </a>
             </td>
@@ -1902,7 +3389,7 @@
         <td>Reserved</td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/bbbb">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.compute/disks/bbbb">
                 bbbb
             </a>
         </td>
@@ -1911,7 +3398,7 @@
         <td>StandardSSD_LRS</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Compute/virtualMachines/openvpn">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.compute/virtualmachines/openvpn">
                     openvpn
                 </a>
             </td>
@@ -1920,7 +3407,7 @@
         <td>Reserved</td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/OPENVPN_GROUP/providers/Microsoft.Compute/disks/openvpn_OsDisk_1_33549c8506024c0bb491daeb65c94359">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.compute/disks/openvpn_osdisk_1_33549c8506024c0bb491daeb65c94359">
                 openvpn_OsDisk_1_33549c8506024c0bb491daeb65c94359
             </a>
         </td>
@@ -1929,7 +3416,7 @@
         <td>StandardSSD_LRS</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/openvpn_group/providers/Microsoft.Compute/virtualMachines/openvpn">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.compute/virtualmachines/openvpn">
                     openvpn
                 </a>
             </td>
@@ -1938,7 +3425,7 @@
         <td>Reserved</td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/disks/explictproxy_OsDisk_1_eb87f5d036d741da92b40e330d07944c">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.compute/disks/explictproxy_osdisk_1_eb87f5d036d741da92b40e330d07944c">
                 explictproxy_OsDisk_1_eb87f5d036d741da92b40e330d07944c
             </a>
         </td>
@@ -1947,7 +3434,7 @@
         <td>StandardSSD_LRS</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Compute/virtualMachines/explictproxy">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.compute/virtualmachines/explictproxy">
                     explictproxy
                 </a>
             </td>
@@ -1956,7 +3443,7 @@
         <td>Reserved</td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/PROXY/providers/Microsoft.Compute/disks/transprocy_OsDisk_1_4d8fae2c6c5e4ec0b6637d3bd245c8a8">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.compute/disks/transprocy_osdisk_1_4d8fae2c6c5e4ec0b6637d3bd245c8a8">
                 transprocy_OsDisk_1_4d8fae2c6c5e4ec0b6637d3bd245c8a8
             </a>
         </td>
@@ -1965,7 +3452,7 @@
         <td>StandardSSD_LRS</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/proxy/providers/Microsoft.Compute/virtualMachines/transprocy">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.compute/virtualmachines/transprocy">
                     transprocy
                 </a>
             </td>
@@ -1974,7 +3461,7 @@
         <td>Attached</td>
     </tr>    <tr>
         <td>
-            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/SYSLOG/providers/Microsoft.Compute/disks/syslog01_OsDisk_1_167589ea44f44d39824423733d2ba8a6">
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.compute/disks/syslog01_osdisk_1_167589ea44f44d39824423733d2ba8a6">
                 syslog01_OsDisk_1_167589ea44f44d39824423733d2ba8a6
             </a>
         </td>
@@ -1983,19 +3470,1043 @@
         <td>StandardSSD_LRS</td>
 
                                 <td>
-                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourceGroups/syslog/providers/Microsoft.Compute/virtualMachines/syslog01">
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.compute/virtualmachines/syslog01">
                     syslog01
                 </a>
             </td>
         
         <td>30</td>
         <td>Reserved</td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.compute/disks/unbound01_osdisk_1_aff19f5451424fb19f960219a47ac04b">
+                unbound01_OsDisk_1_aff19f5451424fb19f960219a47ac04b
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>UNBOUND</td>
+        <td>StandardSSD_LRS</td>
+
+                                <td>
+                <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.compute/virtualmachines/unbound01">
+                    unbound01
+                </a>
+            </td>
+        
+        <td>30</td>
+        <td>Attached</td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.compute/disks/avstest_osdisk_1_7d23a41c1fba40cfbe0d87f090ebc107">
+                avstest_OsDisk_1_7d23a41c1fba40cfbe0d87f090ebc107
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>VWANJE</td>
+        <td>Premium_LRS</td>
+
+                    <td>
+            </td>  
+        
+        <td>30</td>
+        <td>Unattached</td>
     </tr>
                     </tbody>
                 </table>
+                <hr/>
+                <a id="avset">
+                    <h2>Availability Set</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;width:840;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:120px;">
+                        <col style="width:120px;">                        
+                        <col style="width:200px;">
+                    </colgroup>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>FaultDomain</th>
+                            <th>UpdateDomain</th>
+                            <th>VirtualMachinesReferences</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.compute/availabilitysets/avs">
+                avs
+            </a>
+        </td>
+        <td>westus</td>
+        <td>VWANJE</td>
+        <td>2</td>
+        <td>5</td>
 
+        <td>
+             
+                <ul class="list-unstyled">
+                                                                    <li><a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.compute/virtualmachines/avstest">AVSTEST</a></li>
+                                    </ul>
+                    </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.compute/availabilitysets/fg-availabilityset">
+                fg-AvailabilitySet
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>FGNEW</td>
+        <td>2</td>
+        <td>2</td>
+
+        <td>
+                    </td>
+    </tr>
+                    </tbody>
+                </table>
+                <hr/>
+                <a id="storageAccount">
+                    <h2>Storage Account</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;width:1940px;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:100px;">                        
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:600px;">
+                    </colgroup>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>Sku</th>
+                            <th>Kind</th>
+                            <th>AccessTier</th>
+                            <th>CustomDomain</th>
+                            <th>PrimaryLocation</th>
+                            <th>SecondaryLocation</th>
+                            <th>EnableHttpsTrafficOnly</th>
+                            <th>NetworkRuleSet</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/microsoft-network-westus/providers/microsoft.storage/storageaccounts/config1594128577059">
+                config1594128577059
+            </a>
+        </td>
+        <td>westus</td>
+        <td>microsoft-network-westus</td>
+        <td>StandardGRS</td>        
+        <td>BlobStorage</td>
+        <td>Cool</td>
+        <td></td>
+        <td>westus</td>
+        <td>eastus</td>
+        <td>False</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                        
+                        <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                            <colgroup>
+                                <col style="width:60px;">
+                                <col style="width:130px;">
+                            </colgroup>
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Action</th>
+                                    <th>IPAddressOrRange</th>
+                                </tr>
+                            </thead>                
+                                                        <tbody>
+                                <td>Allow</td>
+                                <td>xxx.xxx.xxx.72/30</td>
+                            </tbody>
+                                                        <tbody>
+                                <td>Allow</td>
+                                <td>xxx.xxx.xxx.76/30</td>
+                            </tbody>
+                                                        <tbody>
+                                <td>Allow</td>
+                                <td>xxx.xxx.xxx.80/30</td>
+                            </tbody>
+                                                        <tbody>
+                                <td>Allow</td>
+                                <td>xxx.xxx.xxx.xxx</td>
+                            </tbody>
+                                                    </table>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>Logging, Metrics, AzureServices</td>
+                    <td>Deny</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.storage/storageaccounts/vwanjediag880">
+                vwanjediag880
+            </a>
+        </td>
+        <td>westus</td>
+        <td>vwanje</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>westus</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/testapp/providers/microsoft.storage/storageaccounts/aimlessappsbackup">
+                aimlessappsbackup
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>testapp</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azslog/providers/microsoft.storage/storageaccounts/aimlessazslogcollection">
+                aimlessazslogcollection
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>azslog</td>
+        <td>StandardLRS</td>        
+        <td>StorageV2</td>
+        <td>Cool</td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/flowlogs/providers/microsoft.storage/storageaccounts/aimlessflowlogs2">
+                aimlessflowlogs2
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>flowlogs</td>
+        <td>StandardLRS</td>        
+        <td>StorageV2</td>
+        <td>Hot</td>
+        <td>stgatest.aimless.jp</td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/flowlogs/providers/microsoft.storage/storageaccounts/aimlessflowlogs3">
+                aimlessflowlogs3
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>flowlogs</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.storage/storageaccounts/aimlesshciwitness">
+                aimlesshciwitness
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>azshci</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/airinterop2019v2/providers/microsoft.storage/storageaccounts/airinterop2019b8c1">
+                airinterop2019b8c1
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>airinterop2019v2</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>False</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azresourceprovidersnapshot/providers/microsoft.storage/storageaccounts/azresourceprovi9e06">
+                azresourceprovi9e06
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>AzResourceProviderSnapshot</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>False</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azresourceprovidersnapshot/providers/microsoft.storage/storageaccounts/azrpsnapshot">
+                azrpsnapshot
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>AzResourceProviderSnapshot</td>
+        <td>StandardLRS</td>        
+        <td>StorageV2</td>
+        <td>Hot</td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/microsoft-network-japaneast/providers/microsoft.storage/storageaccounts/config1594125196117">
+                config1594125196117
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>microsoft-network-japaneast</td>
+        <td>StandardLRS</td>        
+        <td>BlobStorage</td>
+        <td>Cool</td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>False</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                        
+                        <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                            <colgroup>
+                                <col style="width:60px;">
+                                <col style="width:130px;">
+                            </colgroup>
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Action</th>
+                                    <th>VirtualNetwork</th>
+                                </tr>
+                            </thead>                
+                                                        <tbody>
+                                <td>Allow</td>
+                                                                <td>
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azshci/providers/microsoft.network/virtualnetworks/azshcilabvnet/subnets/azshcilabsubnet">
+                                        AzSHCILabSubnet
+                                    </a>
+                                </td>
+                            </tbody>
+                                                        <tbody>
+                                <td>Allow</td>
+                                                                <td>
+                                    <a href="#/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/dev/providers/microsoft.network/virtualnetworks/dev-vnet/subnets/default">
+                                        default
+                                    </a>
+                                </td>
+                            </tbody>
+                                                    </table>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Deny</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/fgnew/providers/microsoft.storage/storageaccounts/fgbootdiag">
+                fgbootdiag
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>fgnew</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>False</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/openvpn_group/providers/microsoft.storage/storageaccounts/openvpngroupdiag861">
+                openvpngroupdiag861
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>openvpn_group</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/proxy/providers/microsoft.storage/storageaccounts/proxydiag818">
+                proxydiag818
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>proxy</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/azsdocupdatechecker/providers/microsoft.storage/storageaccounts/storageaccountazsdoa0e5">
+                storageaccountazsdoa0e5
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>azsdocupdatechecker</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/syslog/providers/microsoft.storage/storageaccounts/syslogdiag677">
+                syslogdiag677
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>syslog</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/unbound/providers/microsoft.storage/storageaccounts/unbounddiag808">
+                unbounddiag808
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>unbound</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/vwanje/providers/microsoft.storage/storageaccounts/vwanjediag">
+                vwanjediag
+            </a>
+        </td>
+        <td>japaneast</td>
+        <td>vwanje</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>japaneast</td>
+        <td></td>
+        <td>True</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>    <tr>
+        <td>
+            <a id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-c5bd3103e127/resourcegroups/manakana/providers/microsoft.storage/storageaccounts/aimlessmlwu22375728039">
+                aimlessmlwu22375728039
+            </a>
+        </td>
+        <td>westus2</td>
+        <td>manakana</td>
+        <td>StandardLRS</td>        
+        <td>Storage</td>
+        <td></td>
+        <td></td>
+        <td>westus2</td>
+        <td></td>
+        <td>False</td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                <colgroup>
+                    <col style="width:200px;">
+                    <col style="width:200px;">
+                    <col style="width:100px;">
+                    <col style="width:100px;">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th>IpRules</th>
+                        <th>VirtualNetworkRules</th>
+                        <th>Bypass</th>
+                        <th>DefaultAction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td>
+                                            </td>
+
+                    <td>
+                                            </td>
+
+                    <td>AzureServices</td>
+                    <td>Allow</td>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+
+
+
+
 </body>
 </html>
