@@ -54,6 +54,7 @@
                         <a class="dropdown-item" href="#nsg">Network Security Group</a>
                         <a class="dropdown-item" href="#routeTable">Route Table</a>
                         <a class="dropdown-item" href="#pip">Public IP Address</a>
+                        <a class="dropdown-item" href="#lb">Load Balanccer</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -372,6 +373,29 @@
                     </thead>
                     <tbody>
                         <% allRecoveryServicesVaults -%>
+                    </tbody>
+                </table>
+
+                <hr/>
+                <a id="lb">
+                    <h2>Load Balancer</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>Sku</th>
+                            <th>FrontendIpConfigurations</th>
+                            <th>BackendAddressPools</th>
+                            <th>LoadBalancingRules</th>
+                            <th>Probes</th>
+                            <th>InboundNatRules</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allLbs -%>
                     </tbody>
                 </table>
 

@@ -55,6 +55,10 @@ Write-Log "Get-AzRecoveryServicesVault"
 $allRecoveryServicesVaults = Get-AzRecoveryServicesVault
 $allRecoveryServicesVaultsHtml = ""
 
+Write-Log "Get-AzLoadBalancer"
+$allLbs = Get-AzLoadBalancer
+$allLbsHtml = ""
+
 # Virtual Network
 $allVnets | ForEach-Object {
     $row = invoke-EpsTemplate -Path .\templates\vnetTable.eps -safe -Binding @{
@@ -227,6 +231,25 @@ $allRecoveryServicesVaults | ForEach-Object {
 }
 
 $rootHtml = $rootHtml -replace "<% allRecoveryServicesVaults -%>",$allRecoveryServicesVaultsHtml
+
+# LoadBalancer
+$allLbs | ForEach-Object {
+    $row = Invoke-EpsTemplate -Path .\templates\lbTable.eps -safe -Binding @{
+        Name = $_.Name
+        Location = $_.Location
+        ResourceGroupName = $_.ResourceGroupName
+        FrontendIpConfigurations = $_.FrontendIpConfigurations
+        BackendAddressPools = $_.BackendAddressPools
+        LoadBalancingRules = $_.LoadBalancingRules
+        Probes = $_.Probes
+        InboundNatRules = $_.InboundNatRules
+        Sku = $_.Sku
+        Id = $_.Id.ToLower()
+    }
+    $allLbsHtml += $row
+}
+
+$rootHtml = $rootHtml -replace "<% allLbs -%>",$allLbsHtml
 
 $filename = "output_" + (Get-AzContext).Subscription.Id + "_" + (Get-date -format yyyy-MMdd-HHmm) + ".html"
 $rootHtml | out-file $filename
