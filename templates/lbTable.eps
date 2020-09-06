@@ -33,15 +33,29 @@
                                     </a>
                                 </td>
                                 <td><%= $_.PrivateIpAddress %></td>
-                                <td><%= $_.PrivateIpAllocationMethod %></td>
+                                <td><%= $_.PrivateIpAllocationMethod %></td>                                
 
-                                <% $_.Subnet.Id -Match "/subnets/(.*)?" -%>
                                 <td>
-                                    <a href="#<%= $_.Subnet.Id.ToLower() %>">
-                                        <%= $Matches[1] %>
-                                    </a>
+                                    <% if ( $_.Subnet -ne $Null ) { -%>
+                                        <% $_.Subnet.Id -Match "/subnets/(.*)?" -%>
+                                        
+                                        <a href="#<%= $_.Subnet.Id.ToLower() %>">
+                                            <%= $Matches[1] %>
+                                        </a>
+                                        
+                                    <% } -%>
                                 </td>
-                                <td><%= $_.PublicIpAddress %></td>
+
+                                <td>
+                                    <% if ( $_.PublicIpAddress -ne $Null ) { -%>
+                                        <% $_.PublicIpAddress.Id -Match "/publicIPAddresses/(.*)?" -%>
+                                        
+                                        <a href="#<%= $_.PublicIpAddress.Id.ToLower() %>">
+                                            <%= $Matches[1] %>
+                                        </a>
+                                        
+                                    <% } -%>
+                                </td>
 
                                 <td>
                                     <ul class="list-unstyled">
@@ -72,6 +86,7 @@
                 </tbody>
             </table>
         </td>
+
 
         <td>
             <table class="table table-sm table-bordered table-hover">
@@ -174,6 +189,100 @@
                             </tr>
                         <% } -%>   
                     <% } -%>
+                </tbody>
+            </table>
+        </td>
+
+        <td>
+            <table class="table table-sm table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Protocol</th>
+                        <th>Port</th>
+                        <th>IntervalInSeconds</th>
+                        <th>NumberOfProbes</th>
+                        <th>RequestPath</th>     
+                        <th>LoadBalancingRules</th>     
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if ( $Probes.count -ne 0 ) { -%>
+                        <% $Probes | each { -%>                    
+                            <tr>
+                                <td><%= $_.Name %></td>
+                                <td><%= $_.Protocol %></td>
+                                <td><%= $_.Port %></td>
+                                <td><%= $_.IntervalInSeconds %></td>
+                                <td><%= $_.NumberOfProbes %></td>
+                                <td><%= $_.RequestPath %></td>
+                                <td>
+                                    <% if ( $_.LoadBalancingRules -ne $null ) { -%>
+                                        <ul class="list-unstyled">
+                                            <% $_.LoadBalancingRules | each { -%> 
+                                                <% $_.Id -Match "/loadBalancingRules/(.*)?" -%>
+                                                <a href="#<%= $_.Id.ToLower() %>">
+                                                    <li><%= $Matches[1] %></li>
+                                                </a>
+                                            <% } -%>
+                                        </ul>
+                                    <% } -%>
+                                </td>
+                            </tr>
+                        <% } -%>
+                    <% } -%>   
+                </tbody>
+            </table>
+        </td>
+
+
+        <td>
+            <table class="table table-sm table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Protocol</th>
+                        <th>FrontendPort</th>
+                        <th>BackendPort</th>
+                        <th>IdleTimeoutInMinutes</th>
+                        <th>EnableFloatingIP</th>     
+                        <th>FrontendIPConfiguration</th>
+                        <th>BackendIPConfiguration</th>    
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if ( $InboundNatRules.count -ne 0 ) { -%>
+                        <% $InboundNatRules | each { -%>                    
+                            <tr>
+                                <td><%= $_.Name %></td>
+                                <td><%= $_.Protocol %></td>
+                                <td><%= $_.FrontendPort %></td>
+                                <td><%= $_.BackendPort %></td>
+                                <td><%= $_.IdleTimeoutInMinutes %></td>
+                                <td><%= $_.EnableFloatingIP %></td>
+                                <td>
+                                    <% if ( $_.FrontendIPConfiguration -ne $Null ) { -%>
+                                        <% $_.FrontendIPConfiguration.Id -Match "/frontendIPConfigurations/(.*)?" -%>
+                                        
+                                        <a href="#<%= $_.FrontendIPConfiguration.Id.ToLower() %>">
+                                            <%= $Matches[1] %>
+                                        </a>
+                                        
+                                    <% } -%>
+                                </td>
+                                <td>
+                                    <% if ( $_.BackendIPConfiguration -ne $Null ) { -%>
+                                        <% $_.BackendIPConfiguration.Id -Match "/ipConfigurations/(.*)?" -%>
+                                        
+                                        <a href="#<%= $_.BackendIPConfiguration.Id.ToLower() %>">
+                                            <%= $Matches[1] %>
+                                        </a>
+                                        
+                                    <% } -%>
+                                </td>
+                            </tr>
+                        <% } -%>
+                    <% } -%>   
                 </tbody>
             </table>
         </td>

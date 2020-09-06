@@ -13,22 +13,6 @@ Function Write-Log
     Write-Host "[$Date] $Message" -ForegroundColor $Color
 }
 
-$helpers = @{
-    ConvertFromIdtoLink = { 
-        param($Id,$searchString)
-        if ($Id -ne $Null){
-            $Id -Match "/$searchString/(.*)?" | out-Null
-            $linkName  = $Matches[1]
-            $lowId = $Id.ToLower()
-            $msg = "<a href='#$lowId'>$linkName</a>"
-        } else {
-            $msg = ""
-        }
-        return $msg
-    }
-
-}
-
 . .\functions\convertVnetToHtml.ps1
 . .\functions\convertNsgToHtml.ps1
 . .\functions\convertNicToHtml.ps1
@@ -41,18 +25,18 @@ $helpers = @{
 . .\functions\convertStorageAccountToHtml.ps1
 . .\functions\ConvertLoadbalancerToHtml.ps1
 
-$rootHtml = convertDiskToHtml $rootHtml
-$rootHtml = convertAvsetToHtml $rootHtml
-$rootHtml = convertPipToHtml $rootHtml
-$rootHtml = convertNicToHtml $rootHtml
 $rootHtml = ConvertVnetToHtml $rootHtml
 $rootHtml = convertNsgToHtml $rootHtml
+$rootHtml = convertNicToHtml $rootHtml
 $rootHtml = convertVmToHtml $rootHtml
+$rootHtml = convertPipToHtml $rootHtml
 $rootHtml = convertRoutetableToHtml $rootHtml
+$rootHtml = convertDiskToHtml $rootHtml
 $rootHtml = convertAvsetToHtml $rootHtml
 $rootHtml = ConvertRecoveryservicevaultToHtml $rootHtml
 $rootHtml = ConvertAconvertLoadbalancerToHtml $rootHtml
 $rootHtml = ConvertStorageAccountToHtml $rootHtml
+
 
 $filename = "output_" + (Get-AzContext).Subscription.Id + "_" + (Get-date -format yyyy-MMdd-HHmm) + ".html"
 $rootHtml | out-file $filename

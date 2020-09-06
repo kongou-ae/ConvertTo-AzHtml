@@ -10,15 +10,7 @@
         <td><%= $Version %></td>
         <td><%= $AllocationMethod %></td>
         <td><%= $IpAddress %></td>
-
-        <td>
-            <% if ( $IpConfiguration -ne $null ) { -%>
-                <% $IpConfiguration -Match "IpConfigurations/(.*)?" -%>
-                <a href="#<%= $IpConfiguration.ToLower() %>">
-                    <%= $Matches[1] %>
-                </a>
-            <% } -%>
-        </td>                
+        <td><%= ConvertFromIdtoLink $IpConfiguration "IpConfigurations" %></td>
 
         <td>
             <% if ( $DnsSettings -ne $null ) { -%>

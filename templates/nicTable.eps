@@ -35,16 +35,7 @@
                         <td><%= $_.PrivateIpAddress %></td>
                         <td><%= $_.PrivateIpAddressVersion %></td>
                         <td><%= $_.PrivateIpAllocationMethod %></td>
-
-                        <td>
-                            <% if ( $_.PublicIpAddress -ne $null ) { -%>
-                                <% $_.PublicIpAddress.Id -Match "/publicIPAddresses/(.*)?" -%>
-                                <a href="#<%= $_.PublicIpAddress.Id.ToLower() %>">
-                                    <%= $Matches[1] %>
-                                </a>
-                            <% } -%>
-                        </td>
-
+                        <td><%= ConvertFromIdtoLink $_.PublicIpAddress.Id "publicIPAddresses" %></td>
                     </tbody>
                 <% } -%>
             </table>
@@ -57,13 +48,5 @@
             </ul>
         </td>
         <td><%= $EnableIPForwarding %></td>
-        <td>
-            <% if ( $NetworkSecurityGroup -ne $null ) { -%>
-                <% $NetworkSecurityGroup.Id -Match "networkSecurityGroups/(.*)?" -%>
-                <a href="#<%= $NetworkSecurityGroup.Id.ToLower() %>">
-                    <%= $Matches[1] %>
-                </a>
-            <% } -%>
-        </td>
-
+        <td><%= ConvertFromIdtoLink $NetworkSecurityGroup.Id "networkSecurityGroups" %></td>
     </tr>

@@ -8,14 +8,7 @@
         <td><%= $ResourceGroupName %></td>
         <td><%= $VmSize %></td>
 
-        <td>
-            <% if ( $AvailabilitySetReference -ne $null ) { -%>
-                <% $AvailabilitySetReference.Id -Match "/availabilitySets/(.*)?" -%>
-                <a href="#<%= $AvailabilitySetReference.Id.ToLower() %>">
-                    <%= $Matches[1] %>
-                </a>
-            <% } -%>
-        </td>
+        <td><%= ConvertFromIdtoLink $AvailabilitySetReference.Id "availabilitySets" %></td>
 
         <td>
             <% if ( $Zones.count -ne 0 ) { -%>
@@ -58,12 +51,7 @@
                 <tbody>
                     <tr>
                         <th>ManagedDisk</th>
-                        <% $OsDisk.ManagedDisk.Id -Match "disks/(.*)?" -%>
-                        <td>
-                            <a href="#<%= $OsDisk.ManagedDisk.Id.ToLower() %>">
-                                <%= $Matches[1] %>
-                            </a>
-                        </td>
+                        <td><%= ConvertFromIdtoLink $OsDisk.ManagedDisk.Id "disks" %></td>
                     </tr>
                     <tr>
                         <th>Caching</th>
@@ -89,12 +77,7 @@
                 <% $DataDisks | each { -%>
                 <tbody>
                     <td><%= $_.Lun %></td>
-                    <% $_.ManagedDisk.Id -Match "Microsoft.Compute/disks/(.*)?" -%>
-                        <td>
-                            <a href="#<%= $_.ManagedDisk.Id.ToLower() %>">
-                                <%= $Matches[1] %>
-                            </a>
-                        </td>
+                    <td><%= ConvertFromIdtoLink $_.ManagedDisk.Id "Microsoft.Compute/disks" %></td>
                     <td><%= $_.Caching %></td>
                 </tbody>
                 <% } -%>
@@ -104,12 +87,9 @@
 
         <td>
             <ul class="list-unstyled">
-            <% $NetworkInterfaces | each { -%> 
-                <% $_.Id -Match "NetworkInterfaces/(.*)?" -%>
-                    <a href="#<%= $_.Id.ToLower() %>">
-                        <li><%= $Matches[1] %></li>
-                    </a>
-            <% } -%>
+                <% $NetworkInterfaces | each { -%>
+                    <li><%= ConvertFromIdtoLink $_.Id "NetworkInterfaces" %></li>
+                <% } -%>
             </ul>
         </td>
     </tr>

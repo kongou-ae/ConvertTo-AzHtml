@@ -68,16 +68,11 @@
                                 </tr>
                             </thead>                
                             <% $NetworkRuleSet.VirtualNetworkRules | each { -%>
-                            <tbody>
-                                <td><%= $_.Action %></td>
-                                <% $_.VirtualNetworkResourceId -Match "/subnets/(.*)?" -%>
-                                <td>
-                                    <a href="#<%= $_.VirtualNetworkResourceId.ToLower() %>">
-                                        <%= $Matches[1] %>
-                                    </a>
-                                </td>
-                            </tbody>
-                            <% } -%>
+                                <tbody>
+                                    <td><%= $_.Action %></td>
+                                    <td><%= ConvertFromIdtoLink $_.VirtualNetworkResourceId "subnets" %></td>
+                                </tbody>
+                            <% } -%>  
                         </table>
                         <% } -%>
                     </td>
