@@ -109,11 +109,8 @@
 
                                 <td>
                                     <ul class="list-unstyled">
-                                        <% $BackendAddressPools.BackendIpConfigurations | each { -%> 
-                                            <% $_.Id -Match "/ipConfigurations/(.*)?" -%>
-                                            <a href="#<%= $_.Id.ToLower() %>">
-                                                <li><%= $Matches[1] %></li>
-                                            </a>
+                                        <% $BackendAddressPools.BackendIpConfigurations | each { -%>
+                                            <li><%= ConvertFromIdtoLink $_.Id "ipConfigurations" %></li>
                                         <% } -%>
                                     </ul>
                                 </td>
@@ -121,10 +118,7 @@
                                 <td>
                                     <ul class="list-unstyled">
                                         <% $BackendAddressPools.LoadBalancingRules | each { -%> 
-                                            <% $_.Id -Match "/loadBalancingRules/(.*)?" -%>
-                                            <a href="#<%= $_.Id.ToLower() %>">
-                                                <li><%= $Matches[1] %></li>
-                                            </a>
+                                            <li><%= ConvertFromIdtoLink $_.Id "loadBalancingRules" %></li>
                                         <% } -%>
                                     </ul>
                                 </td>                                
@@ -166,26 +160,10 @@
                                 <td><%= $_.EnableFloatingIP %></td>
                                 <td><%= $_.DisableOutboundSNAT %></td>
 
-                                <% $_.FrontendIPConfiguration.Id -Match "/frontendIPConfigurations/(.*)?" -%>
-                                <td>
-                                    <a href="#<%= $_.FrontendIPConfiguration.Id.ToLower() %>">
-                                        <%= $Matches[1] %>
-                                    </a>
-                                </td>
+                                <td><%= ConvertFromIdtoLink $_.FrontendIPConfiguration.Id "frontendIPConfigurations" %></td>
+                                <td><%= ConvertFromIdtoLink $_.BackendAddressPool.Id "backendAddressPools" %></td>
+                                <td><%= ConvertFromIdtoLink $_.Probe.Id "probes" %></td>
 
-                                <% $_.BackendAddressPool.Id -Match "/backendAddressPools/(.*)?" -%>
-                                <td>
-                                    <a href="#<%= $_.BackendAddressPool.Id.ToLower() %>">
-                                        <%= $Matches[1] %>
-                                    </a>
-                                </td>
-
-                                <% $_.Probe.Id -Match "/probes/(.*)?" -%>
-                                <td>
-                                    <a href="#<%= $_.Probe.Id.ToLower() %>">
-                                        <%= $Matches[1] %>
-                                    </a>
-                                </td>
                             </tr>
                         <% } -%>   
                     <% } -%>
@@ -219,11 +197,8 @@
                                 <td>
                                     <% if ( $_.LoadBalancingRules -ne $null ) { -%>
                                         <ul class="list-unstyled">
-                                            <% $_.LoadBalancingRules | each { -%> 
-                                                <% $_.Id -Match "/loadBalancingRules/(.*)?" -%>
-                                                <a href="#<%= $_.Id.ToLower() %>">
-                                                    <li><%= $Matches[1] %></li>
-                                                </a>
+                                            <% $_.LoadBalancingRules | each { -%>
+                                                <li><%= ConvertFromIdtoLink $_.Id "loadBalancingRules" %></li>
                                             <% } -%>
                                         </ul>
                                     <% } -%>
@@ -260,26 +235,8 @@
                                 <td><%= $_.BackendPort %></td>
                                 <td><%= $_.IdleTimeoutInMinutes %></td>
                                 <td><%= $_.EnableFloatingIP %></td>
-                                <td>
-                                    <% if ( $_.FrontendIPConfiguration -ne $Null ) { -%>
-                                        <% $_.FrontendIPConfiguration.Id -Match "/frontendIPConfigurations/(.*)?" -%>
-                                        
-                                        <a href="#<%= $_.FrontendIPConfiguration.Id.ToLower() %>">
-                                            <%= $Matches[1] %>
-                                        </a>
-                                        
-                                    <% } -%>
-                                </td>
-                                <td>
-                                    <% if ( $_.BackendIPConfiguration -ne $Null ) { -%>
-                                        <% $_.BackendIPConfiguration.Id -Match "/ipConfigurations/(.*)?" -%>
-                                        
-                                        <a href="#<%= $_.BackendIPConfiguration.Id.ToLower() %>">
-                                            <%= $Matches[1] %>
-                                        </a>
-                                        
-                                    <% } -%>
-                                </td>
+                                <td><%= ConvertFromIdtoLink $_.FrontendIPConfiguration.Id "frontendIPConfigurations" %></td>
+                                <td><%= ConvertFromIdtoLink $_.BackendIPConfiguration.Id "ipConfigurations" %></td>
                             </tr>
                         <% } -%>
                     <% } -%>   
