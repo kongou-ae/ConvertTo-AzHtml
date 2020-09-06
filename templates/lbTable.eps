@@ -9,104 +9,75 @@
         <td><%= $Sku.Name %></td>
 
         <td>
-            <table class="table table-sm table-bordered table-hover">
-
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Name</th>
-                        <th>PrivateIpAddress</th>
-                        <th>PrivateIpAllocationMethod</th>
-                        <th>Subnet</th>
-                        <th>PublicIpAddress</th>
-                        <th>InboundNatRules</th>     
-                        <th>LoadBalancingRules</th>                                                 
-                        <th>Zones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if ( $FrontendIpConfigurations.count -ne 0 ) { -%>
-                        <% $FrontendIpConfigurations | each { -%>
+            <% if ( $FrontendIpConfigurations.count -ne 0 ) { -%>
+                <% $FrontendIpConfigurations | each { -%>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
                             <tr>
+                                <th>Name</th>
                                 <td>
                                     <a id="<%= $_.Id.ToLower() %>">
                                         <%= $_.Name %>
                                     </a>
                                 </td>
+                            </tr>
+                            <tr>
+                                <th>PrivateIpAddress</th>
                                 <td><%= $_.PrivateIpAddress %></td>
-                                <td><%= $_.PrivateIpAllocationMethod %></td>                                
-
-                                <td>
-                                    <% if ( $_.Subnet -ne $Null ) { -%>
-                                        <% $_.Subnet.Id -Match "/subnets/(.*)?" -%>
-                                        
-                                        <a href="#<%= $_.Subnet.Id.ToLower() %>">
-                                            <%= $Matches[1] %>
-                                        </a>
-                                        
-                                    <% } -%>
-                                </td>
-
-                                <td>
-                                    <% if ( $_.PublicIpAddress -ne $Null ) { -%>
-                                        <% $_.PublicIpAddress.Id -Match "/publicIPAddresses/(.*)?" -%>
-                                        
-                                        <a href="#<%= $_.PublicIpAddress.Id.ToLower() %>">
-                                            <%= $Matches[1] %>
-                                        </a>
-                                        
-                                    <% } -%>
-                                </td>
-
+                            </tr>
+                            <tr>
+                                <th>PrivateIpAllocationMethod</th>
+                                <td><%= $_.PrivateIpAllocationMethod %></td>
+                            </tr>
+                            <tr>
+                                <th>PublicIpAddress</th>
+                                <td><%= ConvertFromIdtoLink $_.PublicIpAddress.Id "publicIPAddresses" %></td>
+                            </tr>
+                            <tr>
+                                <th>InboundNatRules</th>
                                 <td>
                                     <ul class="list-unstyled">
                                         <% $_.InboundNatRules | each { -%>
-                                            <% $_.Id -Match "/inboundNatRules/(.*)?" -%>
-                                            <a href="#<%= $_.Id.ToLower() %>">
-                                                <%= $Matches[1] %>
-                                            </a>
+                                            <li><%= ConvertFromIdtoLink $_.Id "inboundNatRules" %></li>
                                         <% } -%>
-                                    </ul>
+                                    </ul>                                
                                 </td>
-
+                            </tr>
+                            <tr>
+                                <th>LoadBalancingRules</th>
                                 <td>
                                     <ul class="list-unstyled">
                                         <% $_.LoadBalancingRules | each { -%> 
-                                            <% $_.Id -Match "/loadBalancingRules/(.*)?" -%>
-                                            <a href="#<%= $_.Id.ToLower() %>">
-                                                <%= $Matches[1] %>
-                                            </a>
+                                            <li><%= ConvertFromIdtoLink $_.Id "loadBalancingRules" %></li>
                                         <% } -%>
                                     </ul>
                                 </td>
-
+                            <tr>
+                            <tr>
+                                <th>Zones</th>
                                 <td><%= $_.Zones %></td>
                             </tr>
-                        <% } -%>   
-                    <% } -%>
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                <% } -%>
+            <% } -%>
         </td>
 
-
         <td>
-            <table class="table table-sm table-bordered table-hover">
-
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Name</th>
-                        <th>BackendIpConfigurations</th>
-                        <th>LoadBalancingRules</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if ( $BackendAddressPools.count -ne 0 ) { -%>
+            <% if ( $BackendAddressPools.count -ne 0 ) { -%>
+                <% $BackendAddressPools | each { -%>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
                             <tr>
+                                <th>Name</th>
                                 <td>
-                                    <a id="<%= $BackendAddressPools.Id.ToLower() %>">
-                                        <%= $BackendAddressPools.Name %>
+                                    <a id="<%= $_.Id.ToLower() %>">
+                                        <%= $_.Name %>
                                     </a>
                                 </td>
-
+                            </tr>
+                            <tr>
+                                <th>BackendIpConfigurations</th>
                                 <td>
                                     <ul class="list-unstyled">
                                         <% $BackendAddressPools.BackendIpConfigurations | each { -%>
@@ -114,134 +85,176 @@
                                         <% } -%>
                                     </ul>
                                 </td>
-
+                            </tr>
+                            <tr>
+                                <th>LoadBalancingRules</th>
                                 <td>
                                     <ul class="list-unstyled">
                                         <% $BackendAddressPools.LoadBalancingRules | each { -%> 
                                             <li><%= ConvertFromIdtoLink $_.Id "loadBalancingRules" %></li>
                                         <% } -%>
-                                    </ul>
-                                </td>                                
-                            </tr>
-                                                        
-                    <% } -%>
-                </tbody>
-            </table>
-        </td>
-
-        <td>
-            <table class="table table-sm table-bordered table-hover">
-
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Name</th>
-                        <th>Protocol</th>
-                        <th>FrontendPort</th>
-                        <th>BackendPort</th>
-                        <th>IdleTimeoutInMinutes</th>
-                        <th>LoadDistribution</th>     
-                        <th>EnableFloatingIP</th>         
-                        <th>DisableOutboundSNAT</th>                                    
-                        <th>FrontendIPConfiguration</th>
-                        <th>BackendAddressPool</th>
-                        <th>Probe</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if ( $LoadBalancingRules.count -ne 0 ) { -%>
-                        <% $LoadBalancingRules | each { -%>
-                            <tr>
-                                <td><%= $_.Name %></td>
-                                <td><%= $_.Protocol %></td>
-                                <td><%= $_.FrontendPort %></td>
-                                <td><%= $_.BackendPort %></td>
-                                <td><%= $_.IdleTimeoutInMinutes %></td>
-                                <td><%= $_.LoadDistribution %></td>
-                                <td><%= $_.EnableFloatingIP %></td>
-                                <td><%= $_.DisableOutboundSNAT %></td>
-
-                                <td><%= ConvertFromIdtoLink $_.FrontendIPConfiguration.Id "frontendIPConfigurations" %></td>
-                                <td><%= ConvertFromIdtoLink $_.BackendAddressPool.Id "backendAddressPools" %></td>
-                                <td><%= ConvertFromIdtoLink $_.Probe.Id "probes" %></td>
-
-                            </tr>
-                        <% } -%>   
-                    <% } -%>
-                </tbody>
-            </table>
-        </td>
-
-        <td>
-            <table class="table table-sm table-bordered table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Name</th>
-                        <th>Protocol</th>
-                        <th>Port</th>
-                        <th>IntervalInSeconds</th>
-                        <th>NumberOfProbes</th>
-                        <th>RequestPath</th>     
-                        <th>LoadBalancingRules</th>     
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if ( $Probes.count -ne 0 ) { -%>
-                        <% $Probes | each { -%>                    
-                            <tr>
-                                <td><%= $_.Name %></td>
-                                <td><%= $_.Protocol %></td>
-                                <td><%= $_.Port %></td>
-                                <td><%= $_.IntervalInSeconds %></td>
-                                <td><%= $_.NumberOfProbes %></td>
-                                <td><%= $_.RequestPath %></td>
-                                <td>
-                                    <% if ( $_.LoadBalancingRules -ne $null ) { -%>
-                                        <ul class="list-unstyled">
-                                            <% $_.LoadBalancingRules | each { -%>
-                                                <li><%= ConvertFromIdtoLink $_.Id "loadBalancingRules" %></li>
-                                            <% } -%>
-                                        </ul>
-                                    <% } -%>
+                                    </ul                                
                                 </td>
                             </tr>
-                        <% } -%>
-                    <% } -%>   
-                </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                <% } -%>
+            <% } -%>
         </td>
 
+        <td>
+            <% if ( $LoadBalancingRules.count -ne 0 ) { -%>
+                <% $LoadBalancingRules | each { -%>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <td>
+                                    <a id="<%= $_.Id.ToLower() %>">
+                                        <%= $_.Name %>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Protocol</th>
+                                <td><%= $_.Protocol %></td>
+                            </tr>
+                            <tr>
+                                <th>FrontendPort</th>
+                                <td><%= $_.FrontendPort %></td>
+                            </tr>
+                            <tr>
+                                <th>BackendPort</th>
+                                <td><%= $_.BackendPort %></td>
+                            </tr>
+                            <tr>
+                                <th>IdleTimeoutInMinutes</th>
+                                <td><%= $_.IdleTimeoutInMinutes %></td>
+                            </tr>
+                            <tr>
+                                <th>LoadDistribution</th>
+                                <td><%= $_.LoadDistribution %></td>
+                            <tr>
+                            <tr>
+                                <th>EnableFloatingIP</th>  
+                                <td><%= $_.EnableFloatingIP %></td>
+                            </tr>
+                            <tr>
+                                <th>DisableOutboundSNAT</th>  
+                                <td><%= $_.DisableOutboundSNAT %></td>
+                            </tr>
+                            <tr>
+                                <th>FrontendIPConfiguration</th>  
+                                <td><%= ConvertFromIdtoLink $_.FrontendIPConfiguration.Id "frontendIPConfigurations" %></td>
+                            </tr>
+                            <tr>
+                                <th>BackendAddressPool</th>  
+                                <td><%= ConvertFromIdtoLink $_.BackendAddressPool.Id "backendAddressPools" %></td>
+                            </tr>
+                            <tr>
+                                <th>Probe</th>  
+                                <td><%= ConvertFromIdtoLink $_.Probe.Id "probes" %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <% } -%>
+            <% } -%>
+        </td>
 
         <td>
-            <table class="table table-sm table-bordered table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Name</th>
-                        <th>Protocol</th>
-                        <th>FrontendPort</th>
-                        <th>BackendPort</th>
-                        <th>IdleTimeoutInMinutes</th>
-                        <th>EnableFloatingIP</th>     
-                        <th>FrontendIPConfiguration</th>
-                        <th>BackendIPConfiguration</th>    
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if ( $InboundNatRules.count -ne 0 ) { -%>
-                        <% $InboundNatRules | each { -%>                    
+            <% if ( $Probes.count -ne 0 ) { -%>
+                <% $Probes | each { -%>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
                             <tr>
-                                <td><%= $_.Name %></td>
-                                <td><%= $_.Protocol %></td>
-                                <td><%= $_.FrontendPort %></td>
-                                <td><%= $_.BackendPort %></td>
-                                <td><%= $_.IdleTimeoutInMinutes %></td>
-                                <td><%= $_.EnableFloatingIP %></td>
-                                <td><%= ConvertFromIdtoLink $_.FrontendIPConfiguration.Id "frontendIPConfigurations" %></td>
-                                <td><%= ConvertFromIdtoLink $_.BackendIPConfiguration.Id "ipConfigurations" %></td>
+                                <th>Name</th>
+                                <td>
+                                    <a id="<%= $_.Id.ToLower() %>">
+                                        <%= $_.Name %>
+                                    </a>
+                                </td>
                             </tr>
-                        <% } -%>
-                    <% } -%>   
-                </tbody>
-            </table>
+                            <tr>
+                                <th>Protocol</th>
+                                <td><%= $_.Protocol %></td>
+                            </tr>
+                            <tr>
+                                <th>Port</th>
+                                <td><%= $_.Port %></td>
+                            </tr>
+                            <tr>
+                                <th>IntervalInSeconds</th>
+                                <td><%= $_.IntervalInSeconds %></td>
+                            </tr>
+                            <tr>
+                                <th>NumberOfProbes</th>
+                                <td><%= $_.NumberOfProbes %></td>
+                            </tr>
+                            <tr>
+                                <th>RequestPath</th>
+                                <td><%= $_.RequestPath %></td>
+                            <tr>
+                            <tr>
+                                <th>LoadBalancingRules</th>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        <% $_.LoadBalancingRules | each { -%>
+                                            <li><%= ConvertFromIdtoLink $_.Id "loadBalancingRules" %></li>
+                                        <% } -%>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <% } -%>
+            <% } -%>
+        </td>
+
+        <td>
+            <% if ( $InboundNatRules.count -ne 0 ) { -%>
+                <% $InboundNatRules | each { -%>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <td>
+                                    <a id="<%= $_.Id.ToLower() %>">
+                                        <%= $_.Name %>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Protocol</th>
+                                <td><%= $_.Protocol %></td>
+                            </tr>
+                            <tr>
+                                <th>FrontendPort</th>
+                                <td><%= $_.FrontendPort %></td>
+                            </tr>
+                            <tr>
+                                <th>BackendPort</th>
+                                <td><%= $_.BackendPort %></td>
+                            </tr>
+                            <tr>
+                                <th>IdleTimeoutInMinutes</th>
+                                <td><%= $_.IdleTimeoutInMinutes %></td>
+                            </tr>
+                            <tr>
+                                <th>EnableFloatingIP</th>  
+                                <td><%= $_.EnableFloatingIP %></td>
+                            <tr>
+                            <tr>
+                                <th>FrontendIPConfiguration</th>
+                                <td><%= ConvertFromIdtoLink $_.FrontendIPConfiguration.Id "frontendIPConfigurations" %></td>
+                            <tr>
+                            <tr>
+                                <th>BackendIPConfiguration</th> 
+                                <td><%= ConvertFromIdtoLink $_.BackendIPConfiguration.Id "ipConfigurations" %></td>
+                            <tr>
+                        </tbody>
+                    </table>
+                <% } -%>
+            <% } -%>
         </td>
 
     </tr>
