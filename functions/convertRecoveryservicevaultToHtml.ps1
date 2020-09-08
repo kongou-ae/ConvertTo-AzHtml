@@ -16,6 +16,7 @@ function ConvertRecoveryservicevaultToHtml {
             BackupStorageRedundancy = (Get-AzRecoveryServicesBackupProperties -Vault $_).BackupStorageRedundancy
             EnhancedSecurityState = (Get-AzRecoveryServicesVaultProperty -VaultId $_.Id).EnhancedSecurityState
             SoftDeleteFeatureState = (Get-AzRecoveryServicesVaultProperty -VaultId $_.Id).SoftDeleteFeatureState
+            ProtectionPolicy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $_.Id -WorkloadType AzureVM # only support AzureVM
             Id = $_.Id.ToLower()
         }
         $allRecoveryServicesVaultsHtml += $row
