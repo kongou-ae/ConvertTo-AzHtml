@@ -27,50 +27,26 @@
             
                 <% $IpConfigurations | each { -%>
                     <tbody>
-                        <% $_.Id -Match "ipConfigurations/(.*)?" -%>
                         <td>
                             <a id="<%= $_.Id.ToLower() %>">
-                                <%= $Matches[1] %>
+                                <%= $_.Name %>
                             </a>
                         </td>
                         <td><%= $_.PrivateIpAddress %></td>
                         <td><%= $_.PrivateIpAddressVersion %></td>
                         <td><%= $_.PrivateIpAllocationMethod %></td>
-
-                        <% $_.PublicIpAddress.Id -Match "publicIPAddresses/(.*)?" -%>
-                        <td>
-                            <a href="#<%= $_.PublicIpAddress.Id.ToLower() %>">
-                                <%= $Matches[1] %>
-                            </a>
-                        </td>
-
+                        <td><%= ConvertFromIdtoLink $_.PublicIpAddress.Id "publicIPAddresses" %></td>
                     </tbody>
                 <% } -%>
             </table>
         </td>
-        <% if ($DnsSettings.DnsServers.count -eq 1) { -%>
-            <td><%= $DnsSettings.DnsServers %></td>
-        <% } else { -%>
-            <td>
-                <ul class="list-unstyled">
-                    <% $DnsSettings.DnsServers | each { -%> 
-                        <li><%= $_ %></li>
-                    <% } -%>
-                </ul>
-            </td>
-        <% } -%>
-
+        <td>
+            <ul class="list-unstyled">
+                <% $DnsSettings.DnsServers | each { -%> 
+                    <li><%= $_ %></li>
+                <% } -%>
+            </ul>
+        </td>
         <td><%= $EnableIPForwarding %></td>
-
-        <% if ( $NetworkSecurityGroup.Id -ne $null) { -%>
-            <% $NetworkSecurityGroup.Id -Match "networkSecurityGroups/(.*)?" -%>
-            <td>
-                <a href="#<%= $NetworkSecurityGroup.Id.ToLower() %>">
-                    <%= $Matches[1] %>
-                </a>
-            </td>
-        <% } else { -%>
-            <td>
-            </td>  
-        <% } -%>
+        <td><%= ConvertFromIdtoLink $NetworkSecurityGroup.Id "networkSecurityGroups" %></td>
     </tr>

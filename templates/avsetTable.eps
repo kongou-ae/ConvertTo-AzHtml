@@ -8,15 +8,11 @@
         <td><%= $ResourceGroupName %></td>
         <td><%= $FaultDomain %></td>
         <td><%= $UpdateDomain %></td>
-
         <td>
-            <% if ($VirtualMachinesReferences.count -ne 0) { -%> 
-                <ul class="list-unstyled">
-                    <% $VirtualMachinesReferences | each { -%>
-                        <% $_.Id -Match "/virtualMachines/(.*)?" -%>
-                        <li><a href="#<%= $_.Id.ToLower() %>"><%= $Matches[1] %></a></li>
-                    <% } -%>
-                </ul>
-            <% } -%>
+            <ul class="list-unstyled">
+                <% $VirtualMachinesReferences | each { -%>
+                    <li><%= ConvertFromIdtoLink $_.Id "virtualMachines" %></li>
+                <% } -%>
+            </ul>
         </td>
     </tr>

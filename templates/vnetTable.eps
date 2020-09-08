@@ -3,18 +3,14 @@
         <td><%= $Location %></td>
         <td><%= $ResourceGroupName %></td>
         
-        <% if ($AddressSpace.count -eq 1) { -%>
-            <td><%= $AddressSpace %></td>
-        <% } else { -%>
-            <td>
-                <ul class="list-unstyled">
-                    <% $AddressSpace | each { -%> 
-                        <li><%= $_ %></li>
-                    <% } -%>
-                </ul>
-            </td>
-        <% } -%>
-
+        <td>
+            <ul class="list-unstyled">
+                <% $AddressSpace | each { -%> 
+                    <li><%= $_ %></li>
+                <% } -%>
+            </ul>
+        </td>
+        
         <td>
             <table class="table table-sm table-bordered" style="table-layout: fixed;">
                 <colgroup>
@@ -40,30 +36,11 @@
                             </a>
                         </td>
                         <td><%= $_.AddressPrefix %></td>
-
-                        <% if ( $_.NetworkSecurityGroup.Id -ne $null) { -%>
-                            <% $_.NetworkSecurityGroup.Id -Match "networkSecurityGroups/(.*)?" -%>
-                            <td>
-                                <a href="#<%= $_.NetworkSecurityGroup.Id.ToLower() %>">
-                                    <%= $Matches[1] %>
-                                </a>
-                            </td>
-                        <% } else { -%>
-                            <td>
-                            </td>  
-                        <% } -%>
                         
-                        <% if ( $_.RouteTable.Id -ne $null) { -%>
-                            <% $_.RouteTable.Id -Match "RouteTables/(.*)?" -%>
-                            <td>
-                                <a href="#<%= $_.RouteTable.Id.ToLower() %>">
-                                    <%= $Matches[1] %>
-                                </a>
-                            </td>
-                        <% } else { -%>
-                            <td>
-                            </td>  
-                        <% } -%>
+                        <td><%= ConvertFromIdtoLink $_.NetworkSecurityGroup.Id "networkSecurityGroups" %></td>
+
+                        <td><%= ConvertFromIdtoLink $_.RouteTable.Id "RouteTables" %></td>
+
                     </tr>
                 <% } -%>
                 </tbody>

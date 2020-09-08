@@ -7,19 +7,7 @@
         <td><%= $Location %></td>
         <td><%= $ResourceGroupName %></td>
         <td><%= $Sku.Name %></td>
-
-        <% if ( $ManagedBy -ne $null) { -%>
-            <% $ManagedBy -Match "virtualMachines/(.*)?" -%>
-            <td>
-                <a href="#<%= $ManagedBy.ToLower() %>">
-                    <%= $Matches[1] %>
-                </a>
-            </td>
-        <% } else { -%>
-            <td>
-            </td>  
-        <% } -%>
-
+        <td><%= ConvertFromIdtoLink $ManagedBy "virtualMachines" %></td>
         <td><%= $DiskSizeGB %></td>
         <td><%= $DiskState %></td>
     </tr>
