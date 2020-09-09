@@ -90,11 +90,11 @@
                                                         <td>Weekly</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>RetentionScheduleWeekly_DaysOfTheWeek</th>
+                                                        <th>DaysOfTheWeek</th>
                                                         <td><%= $_.RetentionPolicy.MonthlySchedule.RetentionScheduleWeekly.DaysOfTheWeek -join "," %></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>RetentionScheduleWeekly_WeeksOfTheMonth</th>
+                                                        <th>WeeksOfTheMonth</th>
                                                         <td><%= $_.RetentionPolicy.MonthlySchedule.RetentionScheduleWeekly.WeeksOfTheMonth -join "," %></td>
                                                     </tr>
                                                 <% } else {-%>
@@ -103,13 +103,62 @@
                                                         <td>Daily</td>
                                                     </tr>
                                                     <tr>
-                                                        <th>RetentionScheduleWeekly_DaysOfTheWeek</th>
+                                                        <th>DaysOfTheWeek</th>
                                                         <td><%= ($_.RetentionPolicy.MonthlySchedule.RetentionScheduleDaily.DaysOfTheMonth.Date | Sort-Object ) -join "," -replace "^0,","LAST," %></td>
                                                     </tr>
                                                 <% } -%>
                                             </tbody>
                                         </table>
                                     <% } -%>
+
+                                    <% if ( $_.RetentionPolicy.YearlySchedule -ne $null ) { -%>
+                                        <h3>YearlySchedule</h3>
+                                        <table class="table table-sm table-bordered" style="table-layout: fixed;width:500px;">
+                                            <colgroup>
+                                                <col style="width:230px;">
+                                                <col style="width:270px;">
+                                            </colgroup>
+                                            <tbody>
+                                                <tr>
+                                                    <th>DurationCountInYears</th>
+                                                    <td><%= $_.RetentionPolicy.YearlySchedule.DurationCountInYears %></td>
+                                                </tr>
+            
+                                                <% if ( $_.RetentionPolicy.YearlySchedule.RetentionScheduleFormatType -eq "Weekly" ) { -%>
+                                                    <tr>
+                                                        <th>RetentionScheduleFormatType</th>
+                                                        <td>Weekly</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>MonthsOfYear</th>
+                                                        <td><%= $_.RetentionPolicy.YearlySchedule.MonthsOfYear -join "," %></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>DaysOfTheWeek</th>
+                                                        <td><%= $_.RetentionPolicy.YearlySchedule.RetentionScheduleWeekly.DaysOfTheWeek -join "," %></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>WeeksOfTheMonth</th>
+                                                        <td><%= $_.RetentionPolicy.YearlySchedule.RetentionScheduleWeekly.WeeksOfTheMonth -join "," %></td>
+                                                    </tr>
+                                                <% } else {-%>
+                                                    <tr>
+                                                        <th>RetentionScheduleFormatType</th>
+                                                        <td>Daily</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>MonthsOfYear</th>
+                                                        <td><%= $_.RetentionPolicy.YearlySchedule.MonthsOfYear -join "," %></td>
+                                                    </tr>                                                    
+                                                    <tr>
+                                                        <th>DaysOfTheWeek</th>
+                                                        <td><%= ($_.RetentionPolicy.YearlySchedule.RetentionScheduleDaily.DaysOfTheMonth.Date | Sort-Object ) -join "," -replace "^0,","LAST," %></td>
+                                                    </tr>
+                                                <% } -%>
+                                            </tbody>
+                                        </table>
+                                    <% } -%>
+
                                 </td>
                             </tr>
                         <% } -%>
