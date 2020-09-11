@@ -1,0 +1,44 @@
+    <tr>
+        <td>
+            <a id="<%= $Id %>">
+                <%= $Name %>
+            </a>
+        </td>
+        <td><%= $Location %></td>
+        <td><%= $ResourceGroupName %></td>
+        <td><%= $GatewayIpAddress %></td>
+        <td>
+        
+            <ul class="list-unstyled">
+                <% $LocalNetworkAddressSpace.AddressPrefixes | each { -%> 
+                    <li><%= $_ %></li>
+                <% } -%>
+            </ul>
+
+        </td>
+        <td>
+            <% if ( $BgpSettings.count -ne $Null ) { -%>
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;width:270px;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>Asn</th>
+                            <td><%= $BgpSettings.Asn %></td>
+                        </tr>
+                        <tr>
+                            <th>BgpPeeringAddress</th>
+                            <td><%= $BgpSettings.BgpPeeringAddress %></td>
+                        </tr>
+                        <tr>
+                            <th>PeerWeight</th>
+                            <td><%= $BgpSettings.PeerWeight %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <% } -%>
+        </td>
+
+    </tr>

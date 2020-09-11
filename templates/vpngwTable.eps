@@ -1,0 +1,70 @@
+    <tr>
+        <td>
+            <a id="<%= $Id %>">
+                <%= $Name %>
+            </a>
+        </td>
+        <td><%= $Location %></td>
+        <td><%= $ResourceGroupName %></td>
+        <td><%= $GatewayType %></td>
+        <td><%= $VpnType %></td>
+        <td><%= $Sku %></td>
+        <td><%= $EnableBgp %></td>
+        <td><%= $ActiveActive %></td>
+        <td><%= $GatewayDefaultSite %></td>
+
+        <td>
+            <% if ( $BgpSettings.count -ne $Null ) { -%>
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;width:270px;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>Asn</th>
+                            <td><%= $BgpSettings.Asn %></td>
+                        </tr>
+                        <tr>
+                            <th>BgpPeeringAddress</th>
+                            <td><%= $BgpSettings.BgpPeeringAddress %></td>
+                        </tr>
+                        <tr>
+                            <th>PeerWeight</th>
+                            <td><%= $BgpSettings.PeerWeight %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <% } -%>
+        </td>
+
+        <td>
+            <% if ( $IpConfigurations.count -ne $Null ) { -%>
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;width:270px;">
+                    <colgroup>
+                        <col style="width:125px;">
+                        <col style="width:125px;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>Name</th>
+                            <td>
+                                <a id="<%= $IpConfigurations.Id.ToLower() %>">
+                                    <%= $IpConfigurations.Name %>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Subnet</th>
+                            <td><%= ConvertFromIdtoLink $IpConfigurations.Subnet.Id "subnets" %></td>
+                        </tr>
+                        <tr>
+                            <th>PublicIpAddress</th>
+                            <td><%= ConvertFromIdtoLink $IpConfigurations.PublicIpAddress.Id "publicIPAddresses" %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <% } -%>
+        </td>
+
+    </tr>
