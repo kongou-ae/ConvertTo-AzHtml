@@ -43,6 +43,7 @@ $helpers = @{
 . .\functions\ConvertVpngwToHtml.ps1
 . .\functions\ConvertLocalngwToHtml.ps1
 . .\functions\ConvertVnetconToHtml.ps1
+. .\functions\ConvertResourceGroupToHtml.ps1
 
 $rootHtml = convertDiskToHtml $rootHtml
 $rootHtml = convertAvsetToHtml $rootHtml
@@ -59,6 +60,7 @@ $rootHtml = ConvertStorageAccountToHtml $rootHtml
 $rootHtml = ConvertVpngwToHtml $rootHtml
 $rootHtml = ConvertLocalngwToHtml $rootHtml
 $rootHtml = ConvertVnetconToHtml $rootHtml
+$rootHtml = ConvertResourceGroupToHtml $rootHtml
 
 $filename = "output_" + (Get-AzContext).Subscription.Id + "_" + (Get-date -format yyyy-MMdd-HHmm) + ".html"
 $rootHtml | out-file $filename
