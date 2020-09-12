@@ -40,6 +40,9 @@ $helpers = @{
 . .\functions\ConvertRecoveryservicevaultToHtml.ps1
 . .\functions\convertStorageAccountToHtml.ps1
 . .\functions\ConvertLoadbalancerToHtml.ps1
+. .\functions\ConvertVpngwToHtml.ps1
+. .\functions\ConvertLocalngwToHtml.ps1
+. .\functions\ConvertVnetconToHtml.ps1
 
 $rootHtml = convertDiskToHtml $rootHtml
 $rootHtml = convertAvsetToHtml $rootHtml
@@ -53,6 +56,9 @@ $rootHtml = convertAvsetToHtml $rootHtml
 $rootHtml = ConvertRecoveryservicevaultToHtml $rootHtml
 $rootHtml = ConvertAconvertLoadbalancerToHtml $rootHtml
 $rootHtml = ConvertStorageAccountToHtml $rootHtml
+$rootHtml = ConvertVpngwToHtml $rootHtml
+$rootHtml = ConvertLocalngwToHtml $rootHtml
+$rootHtml = ConvertVnetconToHtml $rootHtml
 
 $filename = "output_" + (Get-AzContext).Subscription.Id + "_" + (Get-date -format yyyy-MMdd-HHmm) + ".html"
 $rootHtml | out-file $filename

@@ -1,0 +1,16 @@
+    <tr>
+        <td>
+            <a id="<%= $Id %>">
+                <%= $Name %>
+            </a>
+        </td>
+        <td><%= $Location %></td>
+        <td><%= $ResourceGroupName %></td>
+        <td><%= ConvertFromIdtoLink $VirtualNetworkGateway1.Id "virtualNetworkGateways" %></td>
+        <td><%= ConvertFromIdtoLink $VirtualNetworkGateway2.Id "virtualNetworkGateways" %></td>
+        <td><%= ConvertFromIdtoLink $LocalNetworkGateway2.Id "localNetworkGateways" %></td>
+        <td><%= $AuthorizationKey %></td>
+        <td><%= $SharedKey %></td>
+        <td><%= $Peer %></td>
+        <td><%= $RoutingWeight %></td>
+    </tr>

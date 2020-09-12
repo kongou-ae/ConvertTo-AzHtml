@@ -19,6 +19,10 @@
             margin-bottom: 0rem;
         }
 
+        h2{
+            margin-top:10px;
+        }
+
         h3{
             font-size: 100%;
             font-weight: bold;
@@ -63,6 +67,9 @@
                         <a class="dropdown-item" href="#routeTable">Route Table</a>
                         <a class="dropdown-item" href="#pip">Public IP Address</a>
                         <a class="dropdown-item" href="#lb">Load Balanccer</a>
+                        <a class="dropdown-item" href="#vpngw">Virtual Network Gateway</a>
+                        <a class="dropdown-item" href="#lgw">Local Network Gateway</a>
+                        <a class="dropdown-item" href="#vnetcon">Connection</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -117,7 +124,7 @@
                         <% allVnets -%>
                     </tbody>
                 </table>
-                <hr/>
+
                 <a id="nic">
                     <h2>Network Interface</h2>
                 </a>
@@ -146,7 +153,7 @@
                         <% allNics -%>
                     </tbody>
                 </table>
-                <hr/>
+
                 <a id="nsg">
                     <h2>Network Security Group</h2>
                 </a>
@@ -169,7 +176,7 @@
                         <% allNsgs -%>
                     </tbody>
                 </table>
-                <hr/>
+
                 <a id="routeTable">
                     <h2>Route table</h2>
                 </a>
@@ -192,7 +199,7 @@
                         <% allRouteTables -%>
                     </tbody>
                 </table>
-                <hr/>
+
                 <a id="pip">
                     <h2>Public IP Address</h2>
                 </a>
@@ -225,7 +232,109 @@
                         <% allPips -%>
                     </tbody>
                 </table>
-                <hr/>
+
+                <a id="vpngw">
+                    <h2>Virtual Network Gateway</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:100px;">
+                        <col style="width:100px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:280px;">
+                        <col style="width:280px;">
+                    </colgroup>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>GatewayType</th>
+                            <th>VpnType</th>
+                            <th>Sku</th>
+                            <th>EnableBgp</th>
+                            <th>ActiveActive</th>
+                            <th>GatewayDefaultSite</th>
+                            <th>BgpSettings</th>
+                            <th>IpConfigurations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allVpngws -%>
+                    </tbody>
+                </table>
+
+
+                <a id="lgw">
+                    <h2>Local Network Gateway</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;width:840;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:280px;">
+                    </colgroup>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>GatewayIpAddress</th>
+                            <th>AddressPrefixes</th>
+                            <th>BgpSettings</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allLocalngws -%>
+                    </tbody>
+                </table>
+
+
+                <a id="vnetcon">
+                    <h2>Connection</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;width:840;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                        <col style="width:150px;">
+                        <col style="width:170px;">
+                        <col style="width:170px;">
+                        <col style="width:170px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                        <col style="width:150px;">
+                    </colgroup>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>ResourceGroupName</th>
+                            <th>VirtualNetworkGateway1</th>
+                            <th>VirtualNetworkGateway2</th>
+                            <th>LocalNetworkGateway2</th>
+                            <th>AuthorizationKey</th>
+                            <th>SharedKey</th>
+                            <th>Peer</th>
+                            <th>RoutingWeight</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allVnetcons -%>
+                    </tbody>
+                </table>
+
+
                 <a id="vm">
                     <h2>Virtual Machine</h2>
                 </a>
@@ -262,7 +371,7 @@
                         <% allVms -%>
                     </tbody>
                 </table>
-                <hr/>
+
                 <a id="disk">
                     <h2>Disk</h2>
                 </a>
@@ -291,7 +400,7 @@
                         <% allDisks -%>
                     </tbody>
                 </table>
-                <hr/>
+
                 <a id="avset">
                     <h2>Availability Set</h2>
                 </a>
@@ -318,7 +427,7 @@
                         <% allAvset -%>
                     </tbody>
                 </table>
-                <hr/>
+
                 <a id="storageAccount">
                     <h2>Storage Account</h2>
                 </a>
@@ -356,7 +465,7 @@
                     </tbody>
                 </table>
 
-                <hr/>
+
                 <a id="RecoveryServiceVault">
                     <h2>Recovery Service Vault</h2>
                 </a>
@@ -387,7 +496,7 @@
                     </tbody>
                 </table>
 
-                <hr/>
+
                 <a id="lb">
                     <h2>Load Balancer</h2>
                 </a>
