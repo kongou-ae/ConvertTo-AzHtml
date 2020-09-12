@@ -58,6 +58,14 @@
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        General
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#rg">Resource Group</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Network
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -100,6 +108,25 @@
     <div class="container ml-sm-1">
         <div class="row">
             <div class="col-sm-12">
+                <a id="rg">
+                    <h2>Resource Group</h2>
+                </a>
+                <table class="table table-sm table-bordered table-hover" style="table-layout: fixed;">
+                    <colgroup>
+                        <col style="width:150px;">
+                        <col style="width:100px;">
+                    </colgroup>
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% allResourceGroups -%>
+                    </tbody>
+                </table>
+
                 <a id="vnet">
                     <h2>Virtual Network</h2>
                 </a>
