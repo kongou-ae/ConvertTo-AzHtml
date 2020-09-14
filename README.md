@@ -2,7 +2,7 @@
 
 The script to export your Azure resoruces in HTML
 
-[Sample html](https://blog.aimless.jp/sample.html)
+[Sample html](https://kongou-ae.github.io/ConvertTo-AzHtml/sample.html)
 
 # Usage
 
